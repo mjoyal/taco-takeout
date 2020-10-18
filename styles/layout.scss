@@ -47,7 +47,7 @@ footer {
   color: white;
   margin: 0;
   padding: 0 3em;
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -67,7 +67,7 @@ footer {
 
 #social-logos {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   .fab {
     padding: 1em;
   }
@@ -76,17 +76,23 @@ footer {
 /*** Menu Item ***/
 
 main {
+  margin: 0 3em;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 60%;
 }
 article {
   border: $border;
   display: flex;
-  justify-content: space-between;
   header {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    margin: 2em;
+  }
+  img {
+   width: 50%;
+  }
+  #price {
+    margin-top: 2em; ;
   }
 }
