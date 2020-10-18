@@ -1,6 +1,8 @@
 // See: https://sass-lang.com/
 @import 'partials/_variables';
-
+@import 'header.scss';
+@import 'footer.scss';
+@import 'menuItems.scss';
 html {
   box-sizing: border-box;
 }
@@ -16,84 +18,6 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-/*** header ***/
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 3em;
-  a {
-    color: $main-color;
-    text-decoration: none;
-  }
-  img {
-    width: 60px;
-  }
-}
-
-#logo {
-  color: $main-color;
-  font-family: 'Medula One', cursive;
-  font-size: 1.5rem;
-}
-
-/*** footer ***/
-
-footer {
-  display: flex;
-  justify-content: space-between;
-  background-color: black;
-  color: $light-grey;
-  margin-top: 3rem;
-  padding: 0 3em;
-  width: 100%;
-  height: 15em;
-  #footer-logo  {
-    color: $color-2;
-    text-decoration: none;
-    font-family: 'Medula One', cursive;
-  }
-  img {
-    margin: 1em 0;
-    max-height: 100%;
-  }
-  p {
-    line-height: 30px;
-  }
-}
-
-#social-logos {
-  display: flex;
-  align-items: flex-end;
-  .fab {
-    padding: 1em;
-  }
-}
-
-/*** Menu Item ***/
-
 main {
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-  width: 60%;
-}
-article {
   display: flex;
-  background-color: white;
-  border-radius: 5px;
-  height: 10rem;
-  header {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-  }
-  img {
-   max-width: 100%;
-   height: 100%;
-   border-radius: 0px 5px 5px 0px;
-  }
-
 }

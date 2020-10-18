@@ -13,6 +13,7 @@ const morgan = require('morgan');
 const { webRoutes } = require("./routes/webRoutes");
 
 
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -45,6 +46,22 @@ webRoutes();
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+app.post("/order", (req, res) => {
+  const twilioAccount = process.env.TWILIO_ACCOUNT;
+  const twilioToken = process.env.TWILIO_TOKEN;;
+
+  const client = require('twilio')(
+    twilioAccount,
+    twilioToken
+  );
+
+  client.messages.create({
+    from: "+16042434743",
+    to: "+17809372950",
+    body: "Order has been placed for Taco-Takeout"
+  }).then((message) => console.log(message));
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

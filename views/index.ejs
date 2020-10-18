@@ -19,33 +19,33 @@
   <body>
     <%- include('partials/_header') %>
     <!-- <%- include('partials/_footer') %> -->
-   <main>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
-    <%- include('partials/_menu-item') %>
 
+   <main>
+     <div class="menu-items">
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+        <%- include('partials/_menu-item') %>
+     </div>
+     <div class="cart">
+      <h1>This is the cart view.</h1>
+      <a href="/cart" class="checkout-btn">Proceed to Checkout</a>
+      <button class="sms-button">Click Meeeeee!</button>
+     </div>
    </main>
+
    <%- include('partials/_footer') %>
   <!-- <aside>
     This is where the cart will be.
   </aside> -->
-  <div>
-    <h1>This is the cart view.</h1>
-    <a href="/cart.ejs"></a>
-  </div>
-  <!-- <button class="sms-button">Click Meeeeee!</button>
-  <form action="">
-    <input type="number" class="wait-time">
-    <input type="submit" value="submit" class="sms">
-  </form> -->
+
   </body>
 </html>

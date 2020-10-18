@@ -1,0 +1,32 @@
+/*** footer ***/
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: $light-grey;
+  margin-top: 3rem;
+  padding: 0 3em;
+  width: 100%;
+  height: 15em;
+  #footer-logo  {
+    color: $color-2;
+    text-decoration: none;
+    font-family: 'Medula One', cursive;
+  }
+  img {
+    margin: 1em 0;
+    max-height: 100%;
+  }
+  p {
+    line-height: 30px;
+  }
+}
+
+#social-logos {
+  display: flex;
+  align-items: flex-end;
+  .fab {
+    padding: 1em;
+  }
+}

@@ -1,10 +1,23 @@
 @import 'partials/_variables';
 
+/*** header ***/
+
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 0 3em;
+  a {
+    color: $main-color;
+    text-decoration: none;
+  }
+  img {
+    width: 60px;
+  }
 }
 
-div {
-  color: blue;
+#logo {
+  color: $main-color;
+  font-family: 'Medula One', cursive;
+  font-size: 1.5rem;
 }
