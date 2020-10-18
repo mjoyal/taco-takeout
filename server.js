@@ -28,7 +28,6 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-<<<<<<< HEAD
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -47,10 +46,6 @@ app.use("/api/menucategories", menuCategoriesRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-=======
-webRoutes();
-
->>>>>>> 55fcc899b27a0de2e3afa69a9fafdf2fe5f11bc4
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -60,7 +55,3 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 55fcc899b27a0de2e3afa69a9fafdf2fe5f11bc4
