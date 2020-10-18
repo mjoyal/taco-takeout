@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  // background-color: #EEE;
+  background-color: $lightest-grey;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -33,9 +33,9 @@ nav {
 }
 
 #logo {
-  color: black;
+  color: $main-color;
   font-family: 'Medula One', cursive;
-
+  font-size: 1.5rem;
 }
 
 /*** footer ***/
@@ -44,8 +44,8 @@ footer {
   display: flex;
   justify-content: space-between;
   background-color: black;
-  color: white;
-  margin: 0;
+  color: $light-grey;
+  margin-top: 3rem;
   padding: 0 3em;
   // position: fixed;
   // left: 0;
@@ -55,6 +55,7 @@ footer {
   #footer-logo  {
     color: $color-2;
     text-decoration: none;
+    font-family: 'Medula One', cursive;
   }
   img {
     margin: 1em 0;
@@ -76,14 +77,15 @@ footer {
 /*** Menu Item ***/
 
 main {
-  margin: 0 3em;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
   width: 60%;
 }
 article {
-  border: $border;
   display: flex;
+  background-color: white;
   header {
     display: flex;
     flex-direction: column;
