@@ -32,6 +32,26 @@ function webRoutes() {
   ordersRoutes(ordersRouter, ordersHelpers);
   app.use('/orders', ordersRouter);
 
+  const checkoutRouter = express.Router();
+  const checkoutRoutes = require("./checkout");
+  checkoutRoutes(checkoutRouter);
+  app.use('/checkout', checkoutRouter);
+
+  const orderSentRouter = express.Router();
+  const orderSentRoutes = require("./order_sent");
+  orderSentRoutes(orderSentRouter);
+  app.use('/order-sent', orderSentRouter);
+
+  const confirmedRouter = express.Router();
+  const confirmedRoutes = require("./order_confirmed");
+  confirmedRoutes(confirmedRouter);
+  app.use('/order-confirmed', confirmedRouter);
+
+  const adminRouter = express.Router();
+  const adminRoutes = require("./admin");
+  adminRoutes(adminRouter);
+  app.use('/admin', adminRouter);
+
   //For Api Testing
   const apiRouter = express.Router();
   const apiRoutes = require("./api");
