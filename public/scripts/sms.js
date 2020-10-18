@@ -7,7 +7,7 @@ $(function() {
   const createSMSRestaurant = function () {
     $.ajax({
       type: "POST",
-      url: "/order",
+      url: "/orderSent",
       success: function (data) {
         console.log(data);
       },
@@ -27,17 +27,12 @@ $(function() {
   const createSMSCustomer = (waitTime) => {
     $.ajax({
       type: "POST",
-      url: apiURL + "/Accounts/" + twilioAccount + "/Messages.json",
+      url: "/orderConfirmed",
       data: {
-        To: "+17809372950",
-        From: "+16042434743",
         Body: "Your order will be ready in " + waitTime + " minutes.",
       },
       success: function (data) {
         console.log(data);
-      },
-      headers: {
-        Authorization: "Basic " + btoa(twilioAccount + ":" + twilioToken),
       },
       error: function (error) {
         console.log(error);

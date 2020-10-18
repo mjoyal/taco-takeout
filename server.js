@@ -11,6 +11,12 @@ const app = express();
 exports.app = app;
 const morgan = require('morgan');
 const { webRoutes } = require("./routes/webRoutes");
+const twilioAccount = process.env.TWILIO_ACCOUNT;
+const twilioToken = process.env.TWILIO_TOKEN;;
+const client = require('twilio')(
+  twilioAccount,
+  twilioToken
+);
 
 
 
@@ -47,19 +53,20 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.post("/order", (req, res) => {
-  const twilioAccount = process.env.TWILIO_ACCOUNT;
-  const twilioToken = process.env.TWILIO_TOKEN;;
-
-  const client = require('twilio')(
-    twilioAccount,
-    twilioToken
-  );
-
+app.post("/orderSent", (req, res) => {
   client.messages.create({
     from: "+16042434743",
     to: "+17809372950",
     body: "Order has been placed for Taco-Takeout"
+  }).then((message) => console.log(message));
+})
+
+app.post("/orderConfirmed", (req, res) => {
+  console.log(req.body["Body"]);
+  client.messages.create({
+    from: "+16042434743",
+    to: "+17809372950",
+    body: req.body["Body"]
   }).then((message) => console.log(message));
 })
 
