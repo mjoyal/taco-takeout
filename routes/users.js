@@ -8,17 +8,15 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = function(router, helper) {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+    helper.getAllUsers()
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        //const menu_categories = data.rows;
+        res.json(data);
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+      .catch(e => {
+        res.send(e);
       });
   });
   return router;
