@@ -10,7 +10,6 @@ const sass = require("node-sass-middleware");
 const app = express();
 exports.app = app;
 const morgan = require('morgan');
-const { webRoutes } = require("./routes/webRoutes");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -41,6 +40,7 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/orders", ordersRoutes(db));
 app.use("/api/menuitems", menuItemsRoutes(db));
 app.use("/api/menucategories", menuCategoriesRoutes(db));
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
