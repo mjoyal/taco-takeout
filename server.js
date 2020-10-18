@@ -11,6 +11,7 @@ const app = express();
 exports.app = app;
 const morgan = require('morgan');
 const { webRoutes } = require("./routes/webRoutes");
+const menuItemHelpers = require('./db/dbHelpers/menuItemHelpers');
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -27,8 +28,6 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-
-
 webRoutes();
 
 // Mount all resource routes
@@ -42,8 +41,17 @@ webRoutes();
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 app.get("/", (req, res) => {
-  res.render("index");
+  menuItemHelpers.getAllMenuItems()
+    .then(data => {
+      res.render('index', { menu_items: data });
+    })
+    .catch(e => {
+      res.send(e);
+    });
 });
 
 app.listen(PORT, () => {

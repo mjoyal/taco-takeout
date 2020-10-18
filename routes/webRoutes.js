@@ -7,7 +7,10 @@ const { app } = require("../server");
 
 function webRoutes() {
 
-  app.use('/', require('./home'));
+  const homeRouter = express.Router();
+  const homeRoutes = require('./home');
+  //homeRoutes(homeRouter, menuItemsHelpers);
+  app.use('/', homeRouter);
 
   const menuItemsRouter = express.Router();
   const menuItemsRoutes = require("./menu_items");

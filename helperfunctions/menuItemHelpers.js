@@ -7,7 +7,6 @@ function menuItemsFormatter() {
       console.log(err);
     })
     ;
-
 }
 menuItemsFormatter();
 
