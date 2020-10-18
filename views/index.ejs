@@ -22,7 +22,9 @@
   <!-- <%- include('partials/_footer') %> -->
   <main>
     <% if(menu_items) { %>
+    <h1> Appetizers </h1>
     <% for(const menu_item in menu_items) { %>
+    <% if(menu_items[menu_item]["menu_category_id"]===1) { %>
     <article>
       <header>
         <h3><%= menu_items[menu_item]["name"] %></h3>
@@ -31,8 +33,51 @@
       </header>
       <img src="images/taco1.png" alt="">
     </article>
-    <% } %>
-    <% } %>
+    <% }%>
+    <% }%>
+
+    <h1> Beverages </h1>
+    <% for(const menu_item in menu_items) { %>
+    <% if(menu_items[menu_item]["menu_category_id"]===2) { %>
+    <article>
+      <header>
+        <h3><%= menu_items[menu_item]["name"] %></h3>
+        <p><%= menu_items[menu_item]["description"] %></p>
+        <p id="price"><%= menu_items[menu_item]["price"] %></p>
+      </header>
+      <img src="images/taco1.png" alt="">
+    </article>
+    <% }%>
+    <% }%>
+    <h1> Entres </h1>
+    <% for(const menu_item in menu_items) { %>
+    <% if(menu_items[menu_item]["menu_category_id"]===3) { %>
+    <article>
+      <header>
+        <h3><%= menu_items[menu_item]["name"] %></h3>
+        <p><%= menu_items[menu_item]["description"] %></p>
+        <p id="price"><%= menu_items[menu_item]["price"] %></p>
+      </header>
+      <img src="images/taco1.png" alt="">
+    </article>
+    <% }%>
+    <% }%>
+
+    <h1> Desserts </h1>
+    <% for(const menu_item in menu_items) { %>
+    <% if(menu_items[menu_item]["menu_category_id"]===4) { %>
+    <article>
+      <header>
+        <h3><%= menu_items[menu_item]["name"] %></h3>
+        <p><%= menu_items[menu_item]["description"] %></p>
+        <p id="price"><%= menu_items[menu_item]["price"] %></p>
+      </header>
+      <img src="images/taco1.png" alt="">
+    </article>
+    <% }%>
+    <% }%>
+    <% }%>
+
   </main>
   <%- include('partials/_footer') %>
   <!-- <aside>

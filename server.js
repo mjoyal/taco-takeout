@@ -12,6 +12,8 @@ exports.app = app;
 const morgan = require('morgan');
 const { webRoutes } = require("./routes/webRoutes");
 const menuItemHelpers = require('./db/dbHelpers/menuItemHelpers');
+const menuItemFormatter = require("./helperfunctions/menuItemFormatter");
+const menu_items = require('./routes/menu_items');
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -47,6 +49,10 @@ webRoutes();
 app.get("/", (req, res) => {
   menuItemHelpers.getAllMenuItems()
     .then(data => {
+      const info = menuItemFormatter.formatMenuItems(data);
+      return info;
+    })
+    .then(data => {
       res.render('index', { menu_items: data });
     })
     .catch(e => {
@@ -58,7 +64,20 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
+// getJSON('story.json').then(function(story) {
+//   addHtmlToPage(story.heading);
 
+//   // TODO: for each url in story.chapterUrls, fetch &amp; display
+// }).then(function() {
+//   // And we're all done!
+//   addTextToPage("All done");
+// }).catch(function(err) {
+//   // Catch any error that happened along the way
+//   addTextToPage("Argh, broken: " + err.message);
+// }).then(function() {
+//   // Always hide the spinner
+//   document.querySelector('.spinner').style.display = 'none';
+// });
 
 
 
