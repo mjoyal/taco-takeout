@@ -6,14 +6,23 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-      <!-- imported fonts -->
+    <!-- imported fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Medula+One&family=Open+Sans:ital,wght@0,300;0,400;0,800;1,800&display=swap" rel="stylesheet">
+    <!--Font awesome-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
     <%- include('partials/_header') %>
-    <h1>Hello World!</h1>
+    <%- include('partials/_footer') %>
+   <main>
+    <%- include('partials/_menu-item') %>
+    <%- include('partials/_menu-item') %>
+    <%- include('partials/_menu-item') %>
+    <%- include('partials/_menu-item') %>
+   </main>
+
   </body>
 </html>
