@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Checkout</title>
-
-
+  <title>Home Page</title>
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -13,22 +11,36 @@
   <!--Font awesome-->
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/sms.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
 </head>
 
 <body>
   <%- include('partials/_header') %>
-  <h1>This is the cart view.</h1>
   <%- include('partials/_footer') %>
+  <main>
+    <% if (menu_items) { %>
+    <% for (const menu_item in menu_items) { %>
+    <article>
+      <header>
+        <h3><%= menu_items[menu_item]["name"] %></h3>
+        <p><%= menu_items[menu_item]["description"] %></p>
+        <p id="price"><%= menu_items[menu_item]["price"] %></p>
+      </header>
+      <img src="images/taco1.png" alt="">
+    </article>
+    <% } %>
+    <% } %>
+
+  </main>
+  <!-- <aside>
+    This is where the cart will be.
+  </aside> -->
+  <button class="sms-button">Click Meeeeee!</button>
+  <form action="">
+    <input type="number" class="wait-time">
+    <input type="submit" value="submit" class="sms">
+  </form>
 </body>
 
-<<<<<<< HEAD
-  <body>
-    <%- include('partials/_header') %>
-    <h1>This is the cart view.</h1>
-    <%- include('partials/_footer') %>
-    <button class="sms-button">Click Meeeeee!</button>
-  </body>
-=======
->>>>>>> 55fcc899b27a0de2e3afa69a9fafdf2fe5f11bc4
 </html>

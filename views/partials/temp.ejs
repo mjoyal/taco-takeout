@@ -1,0 +1,12 @@
+<% if (menuItems) { %>
+<% for (const menuItem in menuItems) { %>
+<article>
+  <header>
+    <h3><%= menu_items[menu_item]["name"] %></h3>
+    <p><%= menu_items[menu_item]["description"] %></p>
+    <p id="price"><%= menu_items[menu_item]["price"] %></p>
+  </header>
+  <img src="images/taco1.png" alt="">
+</article>
+<% } %>
+<% } %>

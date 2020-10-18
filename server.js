@@ -8,19 +8,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
+exports.app = app;
 const morgan = require('morgan');
+const { webRoutes } = require("./routes/webRoutes");
 
-// PG database client/connection setup
-const { Pool } = require('pg');
-const dbParams = require('./lib/db.js');
-const db = new Pool(dbParams);
-db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+// Middleware
 app.use(morgan('dev'));
-
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -31,6 +28,7 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+<<<<<<< HEAD
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -49,11 +47,20 @@ app.use("/api/menucategories", menuCategoriesRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+=======
+webRoutes();
+
+>>>>>>> 55fcc899b27a0de2e3afa69a9fafdf2fe5f11bc4
 app.get("/", (req, res) => {
   res.render("index");
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 55fcc899b27a0de2e3afa69a9fafdf2fe5f11bc4
