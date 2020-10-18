@@ -29,10 +29,10 @@ function webRoutes() {
   ordersRoutes(ordersRouter, ordersHelpers);
   app.use('/orders', ordersRouter);
 
-  const cartRouter = express.Router();
-  const cartRoutes = require("./cart");
-  cartRoutes(cartRouter);
-  app.use('/cart', cartRouter);
+  const checkoutRouter = express.Router();
+  const checkoutRoutes = require("./checkout");
+  checkoutRoutes(checkoutRouter);
+  app.use('/checkout', checkoutRouter);
 
   const orderSentRouter = express.Router();
   const orderSentRoutes = require("./order_sent");
@@ -48,8 +48,6 @@ function webRoutes() {
   const adminRoutes = require("./admin");
   adminRoutes(adminRouter);
   app.use('/admin', adminRouter);
-
-
 
   //For Api Testing
   const apiRouter = express.Router();
