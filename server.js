@@ -54,7 +54,6 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-<<<<<<< HEAD
 
 
 
@@ -62,5 +61,3 @@ app.listen(PORT, () => {
 
 
 
-=======
->>>>>>> 29a25a3d882bc48fd44531638918d239a7ff8b8d
