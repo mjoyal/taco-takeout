@@ -21,7 +21,7 @@ VALUES (1,'Tossed Salad', 'Fresh Tossed Salad', 'appetizer1.jpg', 550);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
 VALUES (2,'Fountain drinks', 'Refreshing Fountain Drink', 'beverage.jpg', 199);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (2,'Flavored tea or lemonade', 'Refreshing flavored tea or lemonade', 'beverage.jpg', 275);
+VALUES (2,'Flavored tea', 'Refreshing flavored tea', 'beverage.jpg', 275);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
 VALUES (2,'Coffee', 'Fresh brewed coffee', 'beverage.jpg', 199);
 

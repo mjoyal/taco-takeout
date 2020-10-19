@@ -16,14 +16,15 @@
             <% for(const menu_item in menu_items) { %>
             <% if(menu_items[menu_item]["menu_category_id"]===1) { %>
             <article>
+            <div class="menu-dish">
               <header>
-                <h3><%= menu_items[menu_item]["name"] %></h3>
-                <p><%= menu_items[menu_item]["description"] %></p>
+                <h3><%= menu_items[menu_item]["name"] %><p class="price"><%= menu_items[menu_item]["price"] %></p></h3>
+                <p class="item-description"><%= menu_items[menu_item]["description"] %></p>
+                <div class="dish-btn">
+                <button class="add-item-btn">Add Item</button>
+                </div>
               </header>
-              <footer>
-                <p id="price"><%= menu_items[menu_item]["price"] %></p>
-                <button class="add-item-btn">Add item</button>
-              </footer>
+            </div>
               <img src="<%= menu_items[menu_item].image_url %>" alt="">
             </article>
             <% }%>
@@ -33,12 +34,15 @@
             <% for(const menu_item in menu_items) { %>
             <% if(menu_items[menu_item]["menu_category_id"]===2) { %>
             <article>
+              <div class="menu-dish">
               <header>
-                <h3><%= menu_items[menu_item]["name"] %></h3>
-                <p><%= menu_items[menu_item]["description"] %></p>
-                <p id="price"><%= menu_items[menu_item]["price"] %></p>
-                <button class="add-item-btn">Add item</button>
+                <h3><%= menu_items[menu_item]["name"] %><p class="price"><%= menu_items[menu_item]["price"] %></p></h3>
+                <p class="item-description"><%= menu_items[menu_item]["description"] %></p>
+                <div class="dish-btn">
+                <button class="add-item-btn">Add Item</button>
+                </div>
               </header>
+              </div>
               <img src="<%= menu_items[menu_item].image_url %>" alt="">
             </article>
             <% }%>
@@ -47,12 +51,15 @@
             <% for(const menu_item in menu_items) { %>
             <% if(menu_items[menu_item]["menu_category_id"]===3) { %>
             <article>
+              <div class="menu-dish">
               <header>
-                <h3><%= menu_items[menu_item]["name"] %></h3>
-                <p><%= menu_items[menu_item]["description"] %></p>
-                <p id="price"><%= menu_items[menu_item]["price"] %></p>
-                <button class="add-item-btn">Add item</button>
+                <h3><%= menu_items[menu_item]["name"] %><p class="price"><%= menu_items[menu_item]["price"] %></p></h3>
+                <p class="item-description"><%= menu_items[menu_item]["description"] %></p>
+                <div class="dish-btn">
+                <button class="add-item-btn">Add Item</button>
+                </div>
               </header>
+              </div>
               <img src="<%= menu_items[menu_item].image_url %>" alt="">
             </article>
             <% }%>
@@ -62,19 +69,23 @@
             <% for(const menu_item in menu_items) { %>
             <% if(menu_items[menu_item]["menu_category_id"]===4) { %>
             <article>
+              <div class="menu-dish">
               <header>
-                <h3><%= menu_items[menu_item]["name"] %></h3>
-                <p><%= menu_items[menu_item]["description"] %></p>
-                <p id="price"><%= menu_items[menu_item]["price"] %></p>
-                <button class="add-item-btn">Add item</button>
+                <h3><%= menu_items[menu_item]["name"] %><p class="price"><%= menu_items[menu_item]["price"] %></p></h3>
+                <p class="item-description"><%= menu_items[menu_item]["description"] %></p>
+                <div class="dish-btn">
+                <button class="add-item-btn">Add Item</button>
+                </div>
               </header>
+              </div>
               <img src="<%= menu_items[menu_item].image_url %>" alt="">
             </article>
             <% }%>
             <% }%>
             <% }%>
         </div>
-        <div class="cart">
+        <div class="cart-container">
+        <div id="position-fix" class="cart">
           <div class="top-cart">
             <h3 class="cart-head">Your Order</h3>
             <%- include('partials/_cartItems') %>
@@ -82,6 +93,7 @@
             <%- include('partials/_cartItems') %>
           </div>
             <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price">$X.XX</span></a>
+        </div>
         </div>
       </main>
 
