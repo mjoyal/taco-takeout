@@ -7,10 +7,10 @@ const { app } = require("../server");
 
 function webRoutes() {
 
-  const homeRouter = express.Router();
-  const homeRoutes = require('./home');
-  //homeRoutes(homeRouter, menuItemsHelpers);
-  app.use('/', homeRouter);
+  // const homeRouter = express.Router();
+  // const homeRoutes = require('./home');
+  // //homeRoutes(homeRouter, menuItemsHelpers);
+  // app.use('/', homeRouter);
 
   const menuItemsRouter = express.Router();
   const menuItemsRoutes = require("./menu_items");
@@ -52,7 +52,7 @@ function webRoutes() {
   adminRoutes(adminRouter);
   app.use('/admin', adminRouter);
 
-  //For Api Testing
+  //For Api Testing (Via Postman)
   const apiRouter = express.Router();
   const apiRoutes = require("./api");
   apiRoutes(apiRouter);

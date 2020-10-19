@@ -17,10 +17,11 @@ const client = require('twilio')(
   twilioAccount,
   twilioToken
 );
+const indexRoute = require("./routes/indexRoute");
 
-// For index route only
-const menuItemHelpers = require('./db/dbHelpers/menuItemHelpers');
-const menuItemFormatter = require("./helperfunctions/menuItemFormatter");
+// For index route only I would like to move his out of this file
+//const = require('./db/dbHelpers/menuItemHelpers');
+//const = require("./helperfunctions/menuItemFormatter");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -40,21 +41,9 @@ app.use(express.static("public"));
 
 //All routes located in Webroutes
 webRoutes();
+indexRoute.getIndex();
 
-app.get("/", (req, res) => {
-  menuItemHelpers.getAllMenuItems()
-    .then(data => {
-      const info = menuItemFormatter.formatMenuItems(data);
-      return info;
-    })
-    .then(data => {
-      res.render('index', { menu_items: data });
-    })
-    .catch(e => {
-      res.send(e);
-    });
-});
-
+// SMS routes to twillio
 app.post("/orderSent", (req, res) => {
   client.messages.create({
     from: "+16042434743",
