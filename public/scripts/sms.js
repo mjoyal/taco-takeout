@@ -1,6 +1,5 @@
 $(function() {
   $("#sms-button").on("click", function (event) {
-    event.preventDefault();
     createSMSRestaurant();
   });
 
@@ -18,7 +17,6 @@ $(function() {
   }
 
   $(".sms").on("click", function(event) {
-    event.preventDefault();
     const waitTime = $(".wait-time").val()
     console.log(waitTime);
     createSMSCustomer(waitTime);
