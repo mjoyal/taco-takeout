@@ -21,4 +21,18 @@ body {
 
 main {
   display: flex;
+  justify-content: space-around;
 }
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+

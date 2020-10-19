@@ -19,75 +19,94 @@
 
 <body>
   <%- include('partials/_header') %>
-  <!-- <%- include('partials/_footer') %> -->
-  <main>
-    <% if(menu_items) { %>
-    <h1> Appetizers </h1>
-    <% for(const menu_item in menu_items) { %>
-    <% if(menu_items[menu_item]["menu_category_id"]===1) { %>
-    <article>
-      <header>
-        <h3><%= menu_items[menu_item]["name"] %></h3>
-        <p><%= menu_items[menu_item]["description"] %></p>
-        <p id="price"><%= menu_items[menu_item]["price"] %></p>
-      </header>
-      <img src="<%= menu_items[menu_item].image_url %>" alt="">
-    </article>
-    <% }%>
-    <% }%>
+  <div class="page-container">
+    <div class="content-wrap">
+      <main>
+        <div id="all-menu-items">
+          <article>
+            <header>
+              <h3>Menu Item</h3>
+              <p>This is the menu item description. Here are the
+                ingredients one, two and three. </p>
+              <p id="price">$9.99</p>
+              <button class="add-item-btn">Add item</button>
+            </header>
+            <img src="images/taco1.png" alt="">
+          </article>
 
-    <h1> Beverages </h1>
-    <% for(const menu_item in menu_items) { %>
-    <% if(menu_items[menu_item]["menu_category_id"]===2) { %>
-    <article>
-      <header>
-        <h3><%= menu_items[menu_item]["name"] %></h3>
-        <p><%= menu_items[menu_item]["description"] %></p>
-        <p id="price"><%= menu_items[menu_item]["price"] %></p>
-      </header>
-      <img src="<%= menu_items[menu_item].image_url %>" alt="">
-    </article>
-    <% }%>
-    <% }%>
-    <h1> Entres </h1>
-    <% for(const menu_item in menu_items) { %>
-    <% if(menu_items[menu_item]["menu_category_id"]===3) { %>
-    <article>
-      <header>
-        <h3><%= menu_items[menu_item]["name"] %></h3>
-        <p><%= menu_items[menu_item]["description"] %></p>
-        <p id="price"><%= menu_items[menu_item]["price"] %></p>
-      </header>
-      <img src="<%= menu_items[menu_item].image_url %>" alt="">
-    </article>
-    <% }%>
-    <% }%>
+          <% if(menu_items) { %>
+            <!-- <h1> Appetizers </h1> -->
+            <% for(const menu_item in menu_items) { %>
+            <% if(menu_items[menu_item]["menu_category_id"]===1) { %>
+            <article>
+              <header>
+                <h3><%= menu_items[menu_item]["name"] %></h3>
+                <p><%= menu_items[menu_item]["description"] %></p>
+                <p id="price"><%= menu_items[menu_item]["price"] %></p>
+                <button class="add-item-btn">Add item</button>
+              </header>
+              <img src="<%= menu_items[menu_item].image_url %>" alt="">
+            </article>
+            <% }%>
+            <% }%>
 
-    <h1> Desserts </h1>
-    <% for(const menu_item in menu_items) { %>
-    <% if(menu_items[menu_item]["menu_category_id"]===4) { %>
-    <article>
-      <header>
-        <h3><%= menu_items[menu_item]["name"] %></h3>
-        <p><%= menu_items[menu_item]["description"] %></p>
-        <p id="price"><%= menu_items[menu_item]["price"] %></p>
-      </header>
-      <img src="<%= menu_items[menu_item].image_url %>" alt="">
-    </article>
-    <% }%>
-    <% }%>
-    <% }%>
+            <!-- <h1> Beverages </h1> -->
+            <% for(const menu_item in menu_items) { %>
+            <% if(menu_items[menu_item]["menu_category_id"]===2) { %>
+            <article>
+              <header>
+                <h3><%= menu_items[menu_item]["name"] %></h3>
+                <p><%= menu_items[menu_item]["description"] %></p>
+                <p id="price"><%= menu_items[menu_item]["price"] %></p>
+              </header>
+              <img src="<%= menu_items[menu_item].image_url %>" alt="">
+            </article>
+            <% }%>
+            <% }%>
+            <!-- <h1> Entres </h1> -->
+            <% for(const menu_item in menu_items) { %>
+            <% if(menu_items[menu_item]["menu_category_id"]===3) { %>
+            <article>
+              <header>
+                <h3><%= menu_items[menu_item]["name"] %></h3>
+                <p><%= menu_items[menu_item]["description"] %></p>
+                <p id="price"><%= menu_items[menu_item]["price"] %></p>
+              </header>
+              <img src="<%= menu_items[menu_item].image_url %>" alt="">
+            </article>
+            <% }%>
+            <% }%>
 
-  </main>
-  <%- include('partials/_footer') %>
-  <!-- <aside>
-    This is where the cart will be.
-  </aside> -->
-  <button class="sms-button">Click Meeeeee!</button>
-  <form action="">
-    <input type="number" class="wait-time">
-    <input type="submit" value="submit" class="sms">
-  </form>
+            <!-- <h1> Desserts </h1> -->
+            <% for(const menu_item in menu_items) { %>
+            <% if(menu_items[menu_item]["menu_category_id"]===4) { %>
+            <article>
+              <header>
+                <h3><%= menu_items[menu_item]["name"] %></h3>
+                <p><%= menu_items[menu_item]["description"] %></p>
+                <p id="price"><%= menu_items[menu_item]["price"] %></p>
+              </header>
+              <img src="<%= menu_items[menu_item].image_url %>" alt="">
+            </article>
+            <% }%>
+            <% }%>
+            <% }%>
+        </div>
+        <div class="cart">
+          <h3>Your Order</h3>
+          <%- include('partials/_cartItems') %>
+          <%- include('partials/_cartItems') %>
+          <%- include('partials/_cartItems') %>
+          <a href="/checkout" class="order-btn">Checkout</a>
+        </div>
+      </main>
+    </div>
+    <%- include('partials/_footer') %>
+
+  </div>
+
+
+
 </body>
 
 </html>

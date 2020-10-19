@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="icon" href="images/taco-favicon.png">
     <!-- imported fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Medula+One&family=Open+Sans:ital,wght@0,300;0,400;0,800;1,800&display=swap" rel="stylesheet">
     <!--Font awesome-->
@@ -16,7 +17,11 @@
 
   <body>
     <%- include('partials/_header') %>
-    <h1>Order placed, waiting for restaurant confirmation </h1>
+    <div class="page-container">
+      <div class="content-wrap">
+        <h1>Your order is placed! Waiting on the restaurant for confirmation… </h1>
+      </div>
       <%- include('partials/_footer') %>
+    </div>
   </body>
 </html>

@@ -1,7 +1,6 @@
 /*** Menu Item ***/
 
-.menu-items {
-  margin: 0 auto;
+#all-menu-items {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
@@ -9,6 +8,7 @@
 }
 article {
   display: flex;
+  justify-content: space-between;
   background-color: white;
   border-radius: 5px;
   height: 10rem;
@@ -23,4 +23,11 @@ article {
    border-radius: 0px 5px 5px 0px;
   }
 
+}
+
+.add-item-btn {
+  background-color: $main-color;
+  color: white;
+  border-radius: 10px;
+  border: none;
 }
