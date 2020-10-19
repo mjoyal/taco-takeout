@@ -17,10 +17,11 @@ const client = require('twilio')(
   twilioAccount,
   twilioToken
 );
+const indexRoute = require("./routes/indexRoute");
 
-
-const menuItemHelpers = require('./db/dbHelpers/menuItemHelpers');
-const menuItemFormatter = require("./helperfunctions/menuItemFormatter");
+// For index route only I would like to move his out of this file
+//const = require('./db/dbHelpers/menuItemHelpers');
+//const = require("./helperfunctions/menuItemFormatter");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -37,29 +38,19 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+
+//All routes located in Webroutes
 webRoutes();
+indexRoute.getIndex();
 
-app.get("/", (req, res) => {
-  menuItemHelpers.getAllMenuItems()
-    .then(data => {
-      const info = menuItemFormatter.formatMenuItems(data);
-      return info;
-    })
-    .then(data => {
-      res.render('index', { menu_items: data });
-    })
-    .catch(e => {
-      res.send(e);
-    });
-});
-
+// SMS routes to twillio
 app.post("/orderSent", (req, res) => {
   client.messages.create({
     from: "+16042434743",
     to: "+17809372950",
     body: "Order has been placed for Taco-Takeout"
   }).then((message) => console.log(message));
-})
+});
 
 app.post("/orderConfirmed", (req, res) => {
   console.log(req.body["Body"]);
@@ -68,7 +59,7 @@ app.post("/orderConfirmed", (req, res) => {
     to: "+17809372950",
     body: req.body["Body"]
   }).then((message) => console.log(message));
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
