@@ -13,7 +13,6 @@
   <!--Font awesome-->
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="module" src="/scripts/sms.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 
@@ -93,11 +92,13 @@
             <% }%>
         </div>
         <div class="cart">
-          <h3>Your Order</h3>
-          <%- include('partials/_cartItems') %>
-          <%- include('partials/_cartItems') %>
-          <%- include('partials/_cartItems') %>
-          <a href="/checkout" class="order-btn">Checkout</a>
+          <div class="top-cart">
+            <h3 class="cart-head">Your Order</h3>
+            <%- include('partials/_cartItems') %>
+            <%- include('partials/_cartItems') %>
+            <%- include('partials/_cartItems') %>
+          </div>
+            <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price">$X.XX</span></a>
         </div>
       </main>
     </div>

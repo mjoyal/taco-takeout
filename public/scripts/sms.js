@@ -1,5 +1,5 @@
 $(function() {
-  $(".sms-button").on("click", function (event) {
+  $("#sms-button").on("click", function (event) {
     event.preventDefault();
     createSMSRestaurant();
   });
