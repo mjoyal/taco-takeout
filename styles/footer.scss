@@ -6,8 +6,10 @@ footer {
   background-color: black;
   color: $light-grey;
   margin-top: 3rem;
-  padding: 0 3em;
+  position: absolute;
+  bottom: 0;
   width: 100%;
+  padding: 0 3em;
   height: 15em;
   #footer-logo  {
     color: $color-2;

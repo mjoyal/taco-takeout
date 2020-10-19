@@ -21,13 +21,15 @@ body {
 
 main {
   display: flex;
+  margin: 0 auto;
 }
 
-/*** add item button ***/
-
-.add-item-btn {
-  background-color: $main-color;
-  color: white;
-  border-radius: 10px;
-  border: none;
+.page-container {
+  position: relative;
+  min-height: 100vh;
 }
+
+.content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
