@@ -1,5 +1,6 @@
 -- Drop and recreate Users table (Example)
 
+DROP TABLE IF EXISTS order_menu_items CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS menu_categories CASCADE;
 DROP TABLE IF EXISTS menu_items CASCADE;
@@ -14,7 +15,6 @@ CREATE TABLE users (
   last_name VARCHAR(255) NOT NULL,
   is_customer BOOLEAN NOT NULL
 );
-
 
 CREATE TABLE menu_categories (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -33,11 +33,16 @@ CREATE TABLE menu_items (
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id),
-  menu_item_id INTEGER REFERENCES menu_items(id),
-  quantity int NOT NULL,
   order_placed_at TIMESTAMP,
   order_started_at TIMESTAMP,
-  order_completed_at TIMESTAMP
+  order_completed_at TIMESTAMP,
+  instructions VARCHAR(255)
+);
+
+CREATE TABLE order_menu_items (
+  order_id INTEGER REFERENCES orders(id),
+  menu_item_id INTEGER REFERENCES menu_items(id),
+  quantity int NOT NULL
 );
 
 
