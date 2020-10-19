@@ -12,7 +12,9 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
     "body-parser": "^1.19.0",
+    "btoa": "^1.2.1",
     "chalk": "^2.4.2",
     "dotenv": "^2.0.0",
     "ejs": "^2.6.2",
