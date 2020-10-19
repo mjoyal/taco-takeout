@@ -9,7 +9,7 @@ module.exports = function(router, menuItemsHelper) {
   router.get("/", (req, res) => {
     menuItemsHelper.getAllMenuItems()
       .then(data => {
-        res.render('ebmenuitems', { menu_items: data });
+        res.render('index', { menu_items: data });
       })
       .catch(e => {
         res.send(e);

@@ -19,11 +19,14 @@ const client = require('twilio')(
 );
 
 
+const menuItemHelpers = require('./db/dbHelpers/menuItemHelpers');
+const menuItemFormatter = require("./helperfunctions/menuItemFormatter");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 // Middleware
+
 app.use(morgan('dev'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,23 +37,20 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-
-
 webRoutes();
 
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-// app.use("/api/users", usersRoutes(db));
-// app.use("/api/orders", ordersRoutes(db));
-// app.use("/api/menuitems", menuItemsRoutes(db));
-// app.use("/api/menucategories", menuCategoriesRoutes(db));
-// Note: mount other resources here, using the same pattern above
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  menuItemHelpers.getAllMenuItems()
+    .then(data => {
+      const info = menuItemFormatter.formatMenuItems(data);
+      return info;
+    })
+    .then(data => {
+      res.render('index', { menu_items: data });
+    })
+    .catch(e => {
+      res.send(e);
+    });
 });
 
 app.post("/orderSent", (req, res) => {
@@ -73,11 +73,3 @@ app.post("/orderConfirmed", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
-
-
-
-
-
-
-
-
