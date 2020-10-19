@@ -92,10 +92,13 @@
             <% }%>
             <% }%>
         </div>
-        <aside>
+        <div class="cart">
           <h3>Your Order</h3>
+          <%- include('partials/_cartItems') %>
+          <%- include('partials/_cartItems') %>
+          <%- include('partials/_cartItems') %>
           <a href="/checkout" class="order-btn">Checkout</a>
-        </aside>
+        </div>
       </main>
     </div>
     <%- include('partials/_footer') %>

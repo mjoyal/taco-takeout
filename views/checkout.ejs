@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="icon" href="images/taco-favicon.png">
   <!-- imported fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Medula+One&family=Open+Sans:ital,wght@0,300;0,400;0,800;1,800&display=swap" rel="stylesheet">
   <!--Font awesome-->
@@ -18,11 +19,17 @@
   <body>
     <%- include('partials/_header') %>
     <div class="page-container">
-      <div class="cart">
-        <h3>This is the cart view.</h3>
-        <button class="sms-button order-btn">Place Order</button>
+      <div class="content-wrap">
+        <div class="cart">
+          <h3>Your Order</h3>
+          <%- include('partials/_cartItems') %>
+          <%- include('partials/_cartItems') %>
+          <%- include('partials/_cartItems') %>
+          <button class="sms-button order-btn">Place Order</button>
         </div>
+      </div>
+        <%- include('partials/_footer') %>
     </div>
-    <%- include('partials/_footer') %>
+
   </body>
 </html>
