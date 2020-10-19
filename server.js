@@ -18,7 +18,7 @@ const client = require('twilio')(
   twilioToken
 );
 
-
+// For index route only
 const menuItemHelpers = require('./db/dbHelpers/menuItemHelpers');
 const menuItemFormatter = require("./helperfunctions/menuItemFormatter");
 
@@ -37,6 +37,8 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+
+//All routes located in Webroutes
 webRoutes();
 
 app.get("/", (req, res) => {
@@ -59,7 +61,7 @@ app.post("/orderSent", (req, res) => {
     to: "+17809372950",
     body: "Order has been placed for Taco-Takeout"
   }).then((message) => console.log(message));
-})
+});
 
 app.post("/orderConfirmed", (req, res) => {
   console.log(req.body["Body"]);
@@ -68,7 +70,7 @@ app.post("/orderConfirmed", (req, res) => {
     to: "+17809372950",
     body: req.body["Body"]
   }).then((message) => console.log(message));
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
