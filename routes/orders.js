@@ -9,7 +9,7 @@
 
 const db = require('../db/connection/db-conn');
 
-module.exports = (router, helpers) => {
+module.exports = (router, helpers, db) => {
 
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
