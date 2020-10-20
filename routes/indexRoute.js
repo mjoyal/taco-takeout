@@ -1,5 +1,6 @@
 const menuItemHelpers = require('../db/dbHelpers/menuItemHelpers');
 const userHelpers = require('../db/dbHelpers/userHelpers');
+const orderHelpers = require('../db/dbHelpers/orderHelpers');
 const menuItemFormatter = require("../helperfunctions/menuItemFormatter");
 const { app } = require("../server");
 
@@ -7,16 +8,22 @@ const getIndex = () => {
   app.get("/", (req, res) => {
     const menuItems = menuItemHelpers.getAllMenuItems();
     const currentUser = userHelpers.getUserById(1);
-    //const currentOrder = orderHelpers.getCurrentUserOrder(1);
-    Promise.all([menuItems, currentUser]).then(values => {
-      console.log(values[0]);
-      console.log(values[1]);
+    const currentCartItems = orderHelpers.getUserCart(1);
+    Promise.all([menuItems, currentUser, currentCartItems]).then(values => {
       return values;
     }).then(values => {
-      const info = menuItemFormatter.formatMenuItems(values[0]);
-      return info;
-    }).then(data => {
-      res.render('index', { menu_items: data });
+      values[0] = menuItemFormatter.formatMenuItems(values[0]);
+      return values;
+    }).then(values => {
+      values[2] = menuItemFormatter.formatMenuItems(values[2]);
+      return values;
+    }).then(values => {
+      const templateVars = {
+        menu_items: values[0],
+        user: values[1],
+        currentCartItems: values[2]
+      };
+      res.render('index', templateVars);
     }).catch(e => {
       res.send(e);
     });

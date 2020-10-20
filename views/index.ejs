@@ -22,7 +22,9 @@
               </h3>
               <p class="item-description"><%= menu_items[menu_item]["description"] %></p>
               <div class="dish-btn">
-                <button class="add-item-btn">Add Item</button>
+                <form class="form-inline" action="/orders/addCartItem/<%= menu_items[menu_item].id %>" method="POST">
+                  <button class="add-item-btn">Add Item</button>
+                </form>
               </div>
             </header>
           </div>
@@ -92,9 +94,17 @@
         <div id="position-fix" class="cart">
           <div class="top-cart">
             <h3 class="cart-head">Your Order</h3>
-            <%- include('partials/_cartItems') %>
-            <%- include('partials/_cartItems') %>
-            <%- include('partials/_cartItems') %>
+            <% for(const currentCartItem in currentCartItems) { %>
+
+            <div class="cart-item">
+              <div class="item-price">
+                <h3><%=currentCartItems[currentCartItem]["name"]%></h3>
+                <h3><%=currentCartItems[currentCartItem]["price"]%></h3>
+              </div>
+              <button class='remove-btn'>Remove</button>
+            </div>
+
+            <% }%>
           </div>
           <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price">$X.XX</span></a>
         </div>

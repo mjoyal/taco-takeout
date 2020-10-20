@@ -1,4 +1,4 @@
-const LocalStorage = require('node-localstorage').LocalStorage;
+
 
 /*
  * All routes for Orders are defined here
@@ -26,17 +26,18 @@ module.exports = (router, helpers) => {
 
   // Add item to order
   router.post('/addCartItem/:id', function(req, res) {
-    helpers.getUserCart().then(data => {
-      if (data.length !== 0) {
-        console.log("1");
-      } else {
-        console.log("0");
-      }
-
-    });
-
-
-
+    // const menu_item_id = req.params.id;
+    // const user_id = 1;
+    // console.log("here");
+    // helpers.getUserCart(user_id).then(data => {
+    //   if (data.length !== 0) {
+    //     console.log("1");
+    //   } else {
+    //     console.log("0");
+    //   }
+    // }).then(
+    //   res.redirect('index')
+    // );
   });
 
   //Remove item from order
