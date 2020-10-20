@@ -8,7 +8,6 @@
 const db = require('../db/connection/db-conn');
 
 module.exports = (router, helpers) => {
-<<<<<<< HEAD
   // Get all orders
   router.get("/", (req, res) => {
     helpers.getAllOrders()
@@ -25,31 +24,11 @@ module.exports = (router, helpers) => {
 
   // Add item to order
   router.get('/addCartItem/:id', function(req, res) {
-    //console.log(req.params.id);
-    // const menu_item_id = req.params.id;
-    // const user_id = 1;
-    // console.log("here");
-    // helpers.getUserCart(user_id).then(data => {
-    //   if (data.length !== 0) {
-    //     console.log("1");
-    //   } else {
-    //     console.log("0");
-    //   }
-    // }).then(res => {
-    //   res.redirect('index');
-    // }
-    // );
   });
 
   //Remove item from order
   router.get('/removeitem', function(req, res) {
-
   });
-
-
-
-=======
->>>>>>> 6d3898139b9e91fb55a1e79c00af7213f5372d8c
 
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
@@ -59,16 +38,16 @@ module.exports = (router, helpers) => {
     JOIN users ON orders.user_id = users.id
     WHERE orders.id = $1
     `, [order_id])
-    .then((data) => {
-      console.log(data.rows[0]);
-      res.render('order', data.rows[0]);
-      return data.rows;
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+      .then((data) => {
+        console.log(data.rows[0]);
+        res.render('order', data.rows[0]);
+        return data.rows;
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
 };
