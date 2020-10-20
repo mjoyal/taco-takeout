@@ -1,3 +1,5 @@
+
+
 const addItemToCart = (data, menu_item_id) => {
   //console.log(Array.isArray(data));
   // result = [];
@@ -27,6 +29,13 @@ const removeItemFromCart = (data) => {
   return priceDollars;
 };
 const getMenuItemFromCart = function(data, menu_item_id) {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].menu_item_id === parseInt(menu_item_id)) {
+      return data[i].id;
+    }
+  }
+};
+const getMenuItemCountFromCart = function(data, menu_item_id) {
   //console.log(menu_item_id);
   for (let i = 0; i < data.length; i++) {
     if (data[i].menu_item_id === parseInt(menu_item_id)) {
@@ -36,4 +45,4 @@ const getMenuItemFromCart = function(data, menu_item_id) {
   }
   //return false;
 };
-module.exports = { removeItemFromCart, addItemToCart, getMenuItemFromCart };
+module.exports = { removeItemFromCart, addItemToCart, getMenuItemFromCart, getMenuItemCountFromCart };

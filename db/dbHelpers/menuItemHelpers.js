@@ -6,8 +6,8 @@ const getAllMenuItems = function() {
     })
     .catch(err => {
       console.log(err);
-    })
-    ;
+    });
+  ;
 };
 exports.getAllMenuItems = getAllMenuItems;
 

@@ -1,13 +1,5 @@
-/*
- * All routes for Orders are defined here
- * Since this file is loaded in server.js into api/users,
- *   these routes are mounted onto /users
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
-
 const db = require('../db/connection/db-conn');
 const orderItemsHelpers = require("../helperfunctions/orderItemsHelpers");
-
 module.exports = (router, helpers) => {
   // Get all orders
   router.get("/", (req, res) => {
@@ -28,8 +20,7 @@ module.exports = (router, helpers) => {
     const menu_item_id = req.params.id;
     const user_id = 1;
     console.log(menu_item_id);
-    helpers.getUserCart(menu_item_id).then(data => {
-      //console.log(data);
+    helpers.getUserCartData(menu_item_id).then(data => {
       return data;
     })
       .then(data => {
@@ -37,11 +28,9 @@ module.exports = (router, helpers) => {
         const orderItemExists = orderItemsHelpers.getMenuItemFromCart(data, menu_item_id);
         if (orderItemExists) {
           //increment item count
-          //console.log("item exists");
           helpers.incrementCartItem(data, menu_item_id);
         } else {
           //add item
-          //console.log("item does not exist");
           helpers.addCartItem(data, menu_item_id);
         }
       }
@@ -53,25 +42,36 @@ module.exports = (router, helpers) => {
         //   .status(500)
         //   .json({ error: err.message });
       });
-    // );
   });
   router.post('/remove/:id', function(req, res) {
     const menu_item_id = req.params.id;
     const user_id = 1;
-    helpers.getUserCart(menu_item_id).then(data => {
-      //console.log(data);
-      return data;
-    }).then(data => {
-      console.log(menu_item_id);
-      cartItemHelpers.addItemToCart(data, menu_item_id);
-    }
-    )
+    console.log("here");
+    helpers.getUserCartData(menu_item_id)
+      .then(data => {
+        //console.log(data);
+        return data;
+      })
+      .then(data => {
+        //console.log(menu_item_id);
+        console.log(data);
+        //cartItemHelpers.addItemToCart(data, menu_item_id);
+        const orderItemCount = orderItemsHelpers.getMenuItemCountFromCart(data, menu_item_id);
+        if (orderItemCount > 1) {
+          console.log(orderItemCount);
+          //helpers.decrementCartItem(data, menu_item_id);
+        } else {
+          //add item
+          console.log("Item count is one");
+        }
+      }
+      )
       .then(
         res.redirect('/')
       ).catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        // res
+        //   .status(500)
+        //   .json({ error: err.message });
       });
     // );
   });

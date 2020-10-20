@@ -82,7 +82,8 @@
               </h3>
               <p class="item-description"><%= menu_items[menu_item]["description"] %></p>
               <div class="dish-btn">
-                <form class="form-inline" method="POST" action="/orderitems/add/<%= menu_items[menu_item]['id'] %>"> <button type="submit" class="add-item-btn">Add Item</button>
+                <form class="form-inline" method="POST" action="/orderitems/add/<%= menu_items[menu_item]['id'] %>">
+                  <button type="submit" class="add-item-btn">Add Item</button>
                 </form>
               </div>
             </header>
@@ -98,15 +99,15 @@
           <div class="top-cart">
             <h3 class="cart-head">Your Order</h3>
             <% for(const currentCartItem in currentCartItems) { %>
-
             <div class="cart-item">
               <div class="item-price">
                 <h3><%=currentCartItems[currentCartItem]["name"]%></h3>
                 <h3><%=currentCartItems[currentCartItem]["price"]%></h3>
               </div>
-              <button class='remove-btn'>Remove</button>
+              <form class="form-inline" method="POST" action="/orderitems/remove/<%= currentCartItems[currentCartItem]['id'] %>">
+                <button class='remove-btn'>Remove</button>
+              </form>
             </div>
-
             <% }%>
           </div>
           <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price">$X.XX</span></a>
