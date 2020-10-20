@@ -1,5 +1,4 @@
 const menuItemFormatter = require("../helperfunctions/menuItemFormatter");
-
 const {formattedMenuPrice} = require("../helperfunctions/menuItemFormatter");
 
 const makeOrder = function (database, order_ids) {
@@ -48,10 +47,11 @@ module.exports = (router, helpers, db) => {
       });
   });
 
-
-  // router.post('/', (req, res) => {
-  //   const minutes = req.body.waitTime;
-  //   const templateVars = {time: minutes}
-  // });
+  router.post('/', (req, res) => {
+    const minutes = req.body.waitTime;
+    const order_id = req.body.order_id;
+    console.log(order_id);
+    const templateVars = {time: minutes}
+  });
 
 };
