@@ -5,12 +5,9 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router = express.Router();
-
-module.exports = function(router, helper) {
+module.exports = function(router, helper, db) {
   router.get("/", (req, res) => {
-    helper.getAllUsers()
+    helper.getAllUsers(db)
       .then(data => {
         //const menu_categories = data.rows;
         res.json(data);

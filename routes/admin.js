@@ -1,5 +1,3 @@
-const db = require('../db/connection/db-conn');
-
 const makeOrder = function (database, order_ids) {
   const orders = {};
   for (const id of order_ids) {
@@ -24,7 +22,7 @@ const findIds = function (database) {
   return makeOrder(database, orderIds);
 };
 
-module.exports = (router, helpers) => {
+module.exports = (router, helpers, db) => {
 
   router.get('/', (req, res) => {
     return db.query(`

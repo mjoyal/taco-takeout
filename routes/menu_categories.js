@@ -5,9 +5,9 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-module.exports = function(router, helper) {
+module.exports = function(router, helper, db) {
   router.get("/", (req, res) => {
-    helper.getAllMenuCategories()
+    helper.getAllMenuCategories(db)
       .then(data => {
         //const menu_categories = data.rows;
         res.json(data);

@@ -1,5 +1,4 @@
-const db = require('../db/connection/db-conn');
-module.exports = (router) => {
+module.exports = (router, db) => {
   router.get("/users", (req, res) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {

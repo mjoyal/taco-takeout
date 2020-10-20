@@ -1,5 +1,5 @@
-const db = require('../connection/db-conn');
-const getAllUsers = function() {
+
+const getAllUsers = function(db) {
   return db.query(`SELECT * FROM users`)
     .then((res) => {
       console.log(res.rows);
@@ -8,7 +8,7 @@ const getAllUsers = function() {
       console.log(err);
     });;
 };
-const getUserById = function(id) {
+const getUserById = function(id, db) {
   return db.query(`SELECT * FROM users WHERE id =$1`, [id])
     .then((res) => {
       return res.rows;
