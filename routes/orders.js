@@ -1,5 +1,3 @@
-
-
 /*
  * All routes for Orders are defined here
  * Since this file is loaded in server.js into api/users,
@@ -7,9 +5,8 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const db = require('../db/connection/db-conn');
 
-module.exports = (router, helpers) => {
+module.exports = (router, helpers, db) => {
 
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
@@ -19,16 +16,16 @@ module.exports = (router, helpers) => {
     JOIN users ON orders.user_id = users.id
     WHERE orders.id = $1
     `, [order_id])
-    .then((data) => {
-      console.log(data.rows[0]);
-      res.render('order', data.rows[0]);
-      return data.rows;
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+      .then((data) => {
+        console.log(data.rows[0]);
+        res.render('order', data.rows[0]);
+        return data.rows;
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
 };

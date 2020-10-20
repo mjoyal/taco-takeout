@@ -23,5 +23,5 @@ const formatMenuItems = (data) => {
   return data;
 };
 
-module.exports = { formatMenuItems, formatImageLocation: formattedImageLocation, formatMenuPrice: formattedMenuPrice };
+module.exports = { formatMenuItems, formattedImageLocation, formattedMenuPrice };
 

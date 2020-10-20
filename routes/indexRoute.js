@@ -1,14 +1,15 @@
 const menuItemHelpers = require('../db/dbHelpers/menuItemHelpers');
 const userHelpers = require('../db/dbHelpers/userHelpers');
 const orderHelpers = require('../db/dbHelpers/orderHelpers');
+//const orderItemsHelpers = require("../db/dbHelpers/orderItemsHelpers");
 const menuItemFormatter = require("../helperfunctions/menuItemFormatter");
 const { app } = require("../server");
 
-const getIndex = () => {
+const getIndex = (db) => {
   app.get("/", (req, res) => {
-    const menuItems = menuItemHelpers.getAllMenuItems();
-    const currentUser = userHelpers.getUserById(1);
-    const currentCartItems = orderHelpers.getUserCart(1);
+    const menuItems = menuItemHelpers.getAllMenuItems(db);
+    const currentUser = userHelpers.getUserById(1, db);
+    const currentCartItems = orderHelpers.getUserCart(1, db);
     Promise.all([menuItems, currentUser, currentCartItems]).then(values => {
       return values;
     }).then(values => {

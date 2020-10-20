@@ -2,13 +2,14 @@
 require('dotenv').config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
-const ENV = process.env.ENV || "development";
-const express = require("express");
-const bodyParser = require("body-parser");
-const sass = require("node-sass-middleware");
+const express = require('express');
 const app = express();
 exports.app = app;
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+//const express = require("express");
+const bodyParser = require("body-parser");
+const sass = require("node-sass-middleware");
 const morgan = require('morgan');
 const { webRoutes } = require("./routes/webRoutes");
 const twilioAccount = process.env.TWILIO_ACCOUNT;
@@ -17,7 +18,7 @@ const client = require('twilio')(
   twilioAccount,
   twilioToken
 );
-
+const db = require('./db/connection/db-conn');
 const indexRoute = require("./routes/indexRoute");
 
 // For index route only I would like to move his out of this file
@@ -29,7 +30,8 @@ const indexRoute = require("./routes/indexRoute");
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 // Middleware
 
-app.use(morgan('dev'));
+app.use(express.json());
+//app.use(morgan('dev'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -42,8 +44,8 @@ app.use(express.static("public"));
 
 
 //All routes located in Webroutes
-webRoutes();
-indexRoute.getIndex();
+webRoutes(db);
+indexRoute.getIndex(db);
 
 // SMS routes to twillio
 app.post("/orderSent", (req, res) => {
