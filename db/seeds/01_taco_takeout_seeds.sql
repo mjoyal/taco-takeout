@@ -39,3 +39,10 @@ VALUES (4,'Churros', 'Delicious churros', 'icecream1.jpg', 575);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
 VALUES (4,'Tortilla Crisp', 'Delicious tortilla crisp', 'icecream1.jpg', 1599);
 
+INSERT INTO orders (user_id)
+VALUES (1);
+
+INSERT INTO order_menu_items (order_id, menu_item_id, quantity)
+VALUES (1, 1, 4),
+(1, 2, 2),
+(1, 5, 3);

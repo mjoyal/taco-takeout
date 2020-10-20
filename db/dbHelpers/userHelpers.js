@@ -6,4 +6,12 @@ const getAllUsers = function() {
       return res.rows;
     });
 };
-exports.getAllUsers = getAllUsers;
+const getUserById = function(id) {
+  return db.query(`SELECT * FROM users WHERE id =$1`, [id])
+    .then((res) => {
+      console.log(res.rows);
+      return res.rows;
+    });
+};
+module.exports = { getAllUsers, getUserById };
+
