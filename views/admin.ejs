@@ -5,12 +5,19 @@
   <title>Pending Orders</title>
   <%- include('partials/_head') %>
 </head>
-
 <body>
   <h1>This is the admin view. </h1>
+  <% for(const order in orders) {%>
+    <h1>Order number: <%=order%></h1>
+    <p>Order items: <%=orders[order]%></p>
+    <hr>
+  <%}%>
+
   <form action="/admin" method="POST">
     <input type="number" class="wait-time" name="waitTime">
-    <input type="submit" value="submit" class="sms">
+    <input type="submit" value="submit" class="testing"> <!-- change class back to sms-->
   </form>
 </body>
 </html>
+
+<!-- anonymous { order_id: 2, first_name: 'Jimmy' } -->

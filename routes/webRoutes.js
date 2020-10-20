@@ -39,7 +39,7 @@ function webRoutes() {
 
   const adminRouter = express.Router();
   const adminRoutes = require("./admin");
-  adminRoutes(adminRouter);
+  adminRoutes(adminRouter, ordersHelpers);
   app.use('/admin', adminRouter);
 
   //For Api Testing (Via Postman)
