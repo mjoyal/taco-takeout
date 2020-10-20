@@ -19,7 +19,15 @@
 }
 
 #cart-checkout {
-  padding-top: 70px;
+  padding-top: 35px;
+  display: flex;
+  justify-content: center;
+}
+
+#cart-admin {
+  padding-top: 35px;
+  display: flex;
+  justify-content: center;
 }
 
 .cart-container {
@@ -94,12 +102,14 @@
 
 #position-fix {
   position: fixed;
-  right: 5px;
+  right: 30px;
   bottom: 250px;
 }
 
 #cart-checkout {
-  padding-top: 70px;
+  padding-top: 35px;
+  display: flex;
+  justify-content: center;
 }
 
 .cart-container {
@@ -178,7 +188,7 @@
 }
 
 #cart-checkout {
-  padding-top: 70px;
+  padding-top: 35px;
 }
 
 .cart-container {
