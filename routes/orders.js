@@ -1,5 +1,3 @@
-
-
 /*
  * All routes for Orders are defined here
  * Since this file is loaded in server.js into api/users,
@@ -8,8 +6,47 @@
  */
 
 const db = require('../db/connection/db-conn');
+<<<<<<< HEAD
 
 module.exports = (router, helpers, db) => {
+=======
+module.exports = (router, helpers) => {
+  // Get all orders
+  router.get("/", (req, res) => {
+    helpers.getAllOrders()
+      .then(data => {
+        const orders = data.rows;
+        res.json({ orders });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  // Add item to order
+  // router.post('/addCartItem/:id', function(req, res) {
+  //   const menu_item_id = req.params.id;
+  //   const user_id = 1;
+  //   helpers.getUserCart(menu_item_id).then(data => {
+  //     //console.log(data);
+  //     return data;
+  //   }).then(data => {
+  //     console.log(menu_item_id);
+  //     cartItemHelpers.addItemToCart(data, menu_item_id);
+  //   }
+  //   )
+  //     .then(
+  //       res.redirect('/')
+  //     ).catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  //   // );
+  // });
+>>>>>>> bc5b80e506fbc4d1abff27391a2c549e08bac99e
 
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
@@ -19,16 +56,16 @@ module.exports = (router, helpers, db) => {
     JOIN users ON orders.user_id = users.id
     WHERE orders.id = $1
     `, [order_id])
-    .then((data) => {
-      console.log(data.rows[0]);
-      res.render('order', data.rows[0]);
-      return data.rows;
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+      .then((data) => {
+        console.log(data.rows[0]);
+        res.render('order', data.rows[0]);
+        return data.rows;
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
 };
