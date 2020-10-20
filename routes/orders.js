@@ -43,25 +43,6 @@ module.exports = (router, helpers) => {
     });
   });
 
-  // router.get('/:id', (req, res)=> {
-  //   const order_id = req.params.id;
-  //   const templateVars = {order_id};
-  //   return db.query(`
-  //   SELECT * FROM orders
-  //   WHERE id = $1
-  //   `, [order_id])
-  //   .then((res) => {
-  //     console.log(res.rows);
-  //     return res.rows;
-  //   })
-  //   .catch(err => {
-  //     res
-  //       .status(500)
-  //       .json({ error: err.message });
-  //   });
-
-  // });
-
 };
 
 
