@@ -8,6 +8,7 @@
 const db = require('../db/connection/db-conn');
 
 module.exports = (router, helpers) => {
+<<<<<<< HEAD
   // Get all orders
   router.get("/", (req, res) => {
     helpers.getAllOrders()
@@ -47,6 +48,8 @@ module.exports = (router, helpers) => {
 
 
 
+=======
+>>>>>>> 6d3898139b9e91fb55a1e79c00af7213f5372d8c
 
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
@@ -56,18 +59,18 @@ module.exports = (router, helpers) => {
     JOIN users ON orders.user_id = users.id
     WHERE orders.id = $1
     `, [order_id])
-      .then((data) => {
-        console.log(data.rows[0]);
-        res.render('order', data.rows[0]);
-        return data.rows;
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    .then((data) => {
+      console.log(data.rows[0]);
+      res.render('order', data.rows[0]);
+      return data.rows;
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
   });
-  return router;
+
 };
 
 
