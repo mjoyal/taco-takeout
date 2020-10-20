@@ -1,5 +1,3 @@
-
-
 /*
  * All routes for Orders are defined here
  * Since this file is loaded in server.js into api/users,
@@ -25,7 +23,8 @@ module.exports = (router, helpers) => {
   });
 
   // Add item to order
-  router.post('/addCartItem/:id', function(req, res) {
+  router.get('/addCartItem/:id', function(req, res) {
+    //console.log(req.params.id);
     // const menu_item_id = req.params.id;
     // const user_id = 1;
     // console.log("here");
@@ -35,8 +34,9 @@ module.exports = (router, helpers) => {
     //   } else {
     //     console.log("0");
     //   }
-    // }).then(
-    //   res.redirect('index')
+    // }).then(res => {
+    //   res.redirect('index');
+    // }
     // );
   });
 

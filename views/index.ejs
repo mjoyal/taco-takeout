@@ -22,8 +22,8 @@
               </h3>
               <p class="item-description"><%= menu_items[menu_item]["description"] %></p>
               <div class="dish-btn">
-                <form class="form-inline" action="/orders/addCartItem/<%= menu_items[menu_item].id %>" method="POST">
-                  <button class="add-item-btn">Add Item</button>
+                <form class="form-inline" action="/orders/addCartItem/<%= menu_items[menu_item]['id'] %>" method="GET">
+                  <button type="submit" class="add-item-btn">Add Item</button>
                 </form>
               </div>
             </header>

@@ -8,8 +8,9 @@ if (process.env.DATABASE_URL) {
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
+    SSL: process.env.DB_SSL,
     max: 25,
-    idleTimeoutMillis: 1000
+    idleTimeoutMillis: 1000,
   };
 }
 module.exports = dbParams;
