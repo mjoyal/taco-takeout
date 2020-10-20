@@ -46,5 +46,5 @@ INSERT INTO order_menu_items (order_id, menu_item_id, quantity)
 VALUES (1, 1, 4),
 (1, 2, 2),
 (1, 5, 3),
-(3, 7, 5)
-(3, 8, 1);
+(2, 7, 5),
+(2, 8, 1);
