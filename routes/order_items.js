@@ -1,6 +1,6 @@
 const db = require('../db/connection/db-conn');
-const orderItemsHelpers = require("../helperfunctions/orderItemsHelpers");
-module.exports = (router, helpers) => {
+//const orderItemsHelpers = require("../helperfunctions/orderItemsHelpers");
+module.exports = function(router, helpers, db) {
   // Get all orders
   router.get("/", (req, res) => {
     helpers.getAllOrders()
@@ -20,7 +20,7 @@ module.exports = (router, helpers) => {
     const menu_item_id = req.params.id;
     const user_id = 1;
     console.log(menu_item_id);
-    helpers.getUserCartData(menu_item_id).then(data => {
+    helpers.getUserCartData(db, menu_item_id).then(data => {
       return data;
     })
       .then(data => {

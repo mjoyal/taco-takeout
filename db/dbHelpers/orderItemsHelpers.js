@@ -1,6 +1,6 @@
-const db = require('../connection/db-conn');
+//const db = require('../connection/db-conn');
 
-const getUserCartData = function(user_id) {
+const getUserCartData = function(db, user_id) {
   return db.query(`
   SELECT orders.id, order_menu_items.order_id, order_menu_items.menu_item_id, menu_items.name,menu_items.price, order_menu_items.quantity FROM orders
   JOIN order_menu_items ON orders.id = order_menu_items.order_id
@@ -9,11 +9,11 @@ const getUserCartData = function(user_id) {
     .then((res) => {
       //console.log(res.rows);
       return res.rows;
-    }).then((res) => {
-      db.release();
+    }).catch((res) => {
+      //db.release();
     });
 };
-const incrementCartItem = function(data, menu_item_id) {
+const incrementCartItem = function(db, data, menu_item_id) {
   const itemToIncrease = parseInt(menu_item_id);
   let newQuantity = 0;
   let idToEdit = 0;
@@ -35,7 +35,7 @@ const incrementCartItem = function(data, menu_item_id) {
     }).catch(err => {
     });;
 };
-const addCartItem = function(data, menu_item_id) {
+const addCartItem = function(db, data, menu_item_id) {
   const itemToIncrease = parseInt(menu_item_id);
   console.log(data[0]);
   return db.query(`
@@ -49,7 +49,7 @@ const addCartItem = function(data, menu_item_id) {
     });;
 };
 
-const removeCartItem = function(data, menu_item_id) {
+const removeCartItem = function(db, data, menu_item_id) {
   const itemToIncrease = parseInt(menu_item_id);
   let newQuantity = 0;
   let idToEdit = 0;
@@ -74,7 +74,7 @@ const removeCartItem = function(data, menu_item_id) {
       console.log(err);
     });
 };
-const decrementCartItem = function(data, menu_item_id) {
+const decrementCartItem = function(db, data, menu_item_id) {
   const itemToIncrease = parseInt(menu_item_id);
   let newQuantity = 0;
   let idToEdit = 0;
