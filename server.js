@@ -17,6 +17,7 @@ const client = require('twilio')(
   twilioAccount,
   twilioToken
 );
+
 const indexRoute = require("./routes/indexRoute");
 
 // For index route only I would like to move his out of this file
@@ -38,6 +39,7 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+
 
 //All routes located in Webroutes
 webRoutes();
