@@ -7,6 +7,8 @@ const LocalStorage = require('node-localstorage').LocalStorage;
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+const db = require('../db/connection/db-conn');
+
 module.exports = (router, helpers) => {
   // Get all orders
   router.get("/", (req, res) => {
@@ -39,18 +41,31 @@ module.exports = (router, helpers) => {
 
   //Remove item from order
   router.get('/removeitem', function(req, res) {
-    // const templateVars = {
-    //   urls: urlDatabase,
-    //   user: getUserById(req.session.user_id, users),
-    //   longURL: ""
-    // };
-    // if (req.session.user_id) {
-    //   res.render('urls_new', templateVars);
-    // } else {
-    //   res.redirect(`/`);
-    // }
+
   });
 
+
+
+
+  router.get('/:id', (req, res) => {
+    const order_id = req.params.id;
+    return db.query(`
+    SELECT orders.id as order_id, users.first_name
+    FROM orders
+    JOIN users ON orders.user_id = users.id
+    WHERE orders.id = $1
+    `, [order_id])
+      .then((data) => {
+        console.log(data.rows[0]);
+        res.render('order', data.rows[0]);
+        return data.rows;
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
   return router;
 };
 

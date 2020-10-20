@@ -33,13 +33,15 @@ CREATE TABLE menu_items (
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id),
-  order_placed_at TIMESTAMP,
+  order_placed_at TIMESTAMP DEFAULT Now(),
   order_started_at TIMESTAMP,
   order_completed_at TIMESTAMP,
+  order_time INTEGER, 
   instructions VARCHAR(255)
 );
 
 CREATE TABLE order_menu_items (
+  id SERIAL PRIMARY KEY NOT NULL,
   order_id INTEGER REFERENCES orders(id),
   menu_item_id INTEGER REFERENCES menu_items(id),
   quantity int NOT NULL
