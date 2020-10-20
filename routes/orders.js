@@ -8,20 +8,6 @@
 const db = require('../db/connection/db-conn');
 
 module.exports = (router, helpers) => {
-  // router.get("/", (req, res) => {
-  //   helpers.getAllOrders()
-  //     .then(data => {
-  //       const orders = data.rows;
-  //       console.log(orders);
-  //       res.json({ orders });
-  //     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  //     res.render('order');
-  // });
 
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
@@ -32,7 +18,7 @@ module.exports = (router, helpers) => {
     WHERE orders.id = $1
     `, [order_id])
     .then((data) => {
-      console.log(data.rows[0])
+      console.log(data.rows[0]);
       res.render('order', data.rows[0]);
       return data.rows;
     })
@@ -42,25 +28,6 @@ module.exports = (router, helpers) => {
         .json({ error: err.message });
     });
   });
-
-  // router.get('/:id', (req, res)=> {
-  //   const order_id = req.params.id;
-  //   const templateVars = {order_id};
-  //   return db.query(`
-  //   SELECT * FROM orders
-  //   WHERE id = $1
-  //   `, [order_id])
-  //   .then((res) => {
-  //     console.log(res.rows);
-  //     return res.rows;
-  //   })
-  //   .catch(err => {
-  //     res
-  //       .status(500)
-  //       .json({ error: err.message });
-  //   });
-
-  // });
 
 };
 
