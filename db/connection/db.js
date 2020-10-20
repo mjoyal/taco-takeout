@@ -9,7 +9,7 @@ if (process.env.DATABASE_URL) {
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     SSL: process.env.DB_SSL,
-    max: 25,
+    max: 20,
     idleTimeoutMillis: 1000,
   };
 }
