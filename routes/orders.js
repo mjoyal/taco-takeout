@@ -7,10 +7,8 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const db = require('../db/connection/db-conn');
 
 module.exports = (router, helpers, db) => {
-
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
     return db.query(`
