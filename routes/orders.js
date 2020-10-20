@@ -6,7 +6,6 @@
  */
 
 const db = require('../db/connection/db-conn');
-
 module.exports = (router, helpers) => {
   // Get all orders
   router.get("/", (req, res) => {
@@ -23,30 +22,26 @@ module.exports = (router, helpers) => {
   });
 
   // Add item to order
-  router.get('/addCartItem/:id', function(req, res) {
-    //console.log(req.params.id);
-    // const menu_item_id = req.params.id;
-    // const user_id = 1;
-    // console.log("here");
-    // helpers.getUserCart(user_id).then(data => {
-    //   if (data.length !== 0) {
-    //     console.log("1");
-    //   } else {
-    //     console.log("0");
-    //   }
-    // }).then(res => {
-    //   res.redirect('index');
-    // }
-    // );
-  });
-
-  //Remove item from order
-  router.get('/removeitem', function(req, res) {
-
-  });
-
-
-
+  // router.post('/addCartItem/:id', function(req, res) {
+  //   const menu_item_id = req.params.id;
+  //   const user_id = 1;
+  //   helpers.getUserCart(menu_item_id).then(data => {
+  //     //console.log(data);
+  //     return data;
+  //   }).then(data => {
+  //     console.log(menu_item_id);
+  //     cartItemHelpers.addItemToCart(data, menu_item_id);
+  //   }
+  //   )
+  //     .then(
+  //       res.redirect('/')
+  //     ).catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  //   // );
+  // });
 
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;

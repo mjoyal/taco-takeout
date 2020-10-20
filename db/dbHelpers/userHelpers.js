@@ -9,7 +9,6 @@ const getAllUsers = function() {
 const getUserById = function(id) {
   return db.query(`SELECT * FROM users WHERE id =$1`, [id])
     .then((res) => {
-      console.log(res.rows);
       return res.rows;
     });
 };

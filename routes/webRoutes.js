@@ -3,6 +3,7 @@ const menuItemsHelpers = require('../db/dbHelpers/menuItemHelpers');
 const usersHelpers = require('../db/dbHelpers/userHelpers');
 const menuCategoriesHelpers = require('../db/dbHelpers/menuCategoryHelpers');
 const ordersHelpers = require('../db/dbHelpers/orderHelpers');
+const orderItemsHelpers = require('../db/dbHelpers/orderItemsHelpers');
 const { app } = require("../server");
 
 function webRoutes() {
@@ -17,6 +18,11 @@ function webRoutes() {
   menuItemsRoutes(menuItemsRouter, menuItemsHelpers);
   app.use('/menuitems', menuItemsRouter);
 
+  const orderItemsRouter = express.Router();
+  const orderItemsRoutes = require("./order_items");
+  orderItemsRoutes(orderItemsRouter, orderItemsHelpers);
+  app.use('/orderitems', orderItemsRouter);
+
   const menuCategoriesRouter = express.Router();
   const menuCategoriesRoutes = require("./menu_categories");
   menuCategoriesRoutes(menuCategoriesRouter, menuCategoriesHelpers);
@@ -30,7 +36,7 @@ function webRoutes() {
   const ordersRouter = express.Router();
   const ordersRoutes = require("./orders");
   ordersRoutes(ordersRouter, ordersHelpers);
-  app.use('/order', ordersRouter);
+  app.use('/orders', ordersRouter);
 
   const checkoutRouter = express.Router();
   const checkoutRoutes = require("./checkout");
