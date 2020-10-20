@@ -1,12 +1,15 @@
+const menuItemFormatter = require("../helperfunctions/menuItemFormatter");
+
+const {formattedMenuPrice} = require("../helperfunctions/menuItemFormatter");
+
 const makeOrder = function (database, order_ids) {
   const orders = {};
   for (const id of order_ids) {
-
     orders[id] = [];
     for (const data of database) {
-      if (data.order_id === id) {
-        orders[id].push(data.name);
-      }
+      const price = formattedMenuPrice(data);
+      const order = {'name': data.name, 'price': price}
+      orders[id].push(order)
     }
   }
   return orders;
@@ -19,14 +22,16 @@ const findIds = function (database) {
       orderIds.push(data.order_id);
     }
   }
+  console.log(orderIds);
   return makeOrder(database, orderIds);
 };
+
 
 module.exports = (router, helpers, db) => {
 
   router.get('/', (req, res) => {
     return db.query(`
-    SELECT orders.id as order_id, menu_items.name
+    SELECT orders.id as order_id, menu_items.name, menu_items.price
     FROM orders
     JOIN order_menu_items ON orders.id = order_id
     JOIN menu_items ON menu_item_id = menu_items.id
@@ -34,7 +39,6 @@ module.exports = (router, helpers, db) => {
     `,)
       .then(data => {
         const reformatedData = findIds(data.rows);
-        console.log(reformatedData);
         console.log({orders: reformatedData});
         res.render('admin', {orders: reformatedData});
         return data.rows;
