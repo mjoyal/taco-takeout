@@ -5,39 +5,38 @@
   <title>Pending Orders</title>
   <%- include('partials/_head') %>
 </head>
+
 <body>
-<%- include('partials/_header') %>
-    <div class="page-container">
-      <div class="content-wrap">
-        <div id="cart-admin">
-          <%for(const order in orders) {%>
+  <%- include('partials/_header') %>
+  <div class="page-container">
+    <div class="content-wrap">
+      <div id="cart-admin">
+        <%for(const order in orders) {%>
         <div class="cart">
           <div class="top-cart">
-
             <h3 class="cart-head">Order # <%=order%></h3>
-           <% for(const item of orders[order]) { %>
+            <% for(const item of orders[order]) { %>
             <div class="cart-item">
               <div class="item-price">
-                <h3><%=item.quantity%></h3>
+                <h3><%=item.quantity%>x</h3>
                 <h3><%=item.name%></h3>
                 <h3><%=item.price%></h3>
               </div>
             </div>
-          <%}%>
+            <%}%>
           </div>
           <form action="/admin" method="POST">
             <input type="number" class="wait-time" name="waitTime">
             <input type="submit" value="submit" class="testing"> <!--change back to class sms -->
             <input type="hidden" name="order_id" value="<%=order%>">
-          </form>
-        </div>
-        <%}%>
+            </form>
+          </div>
+          <%}%>
         </div>
       </div>
         <%- include('partials/_footer') %>
-    </div>
+        </div>
 
 </body>
-</html>
 
-<!-- anonymous { order_id: 2, first_name: 'Jimmy' } -->
+</html>

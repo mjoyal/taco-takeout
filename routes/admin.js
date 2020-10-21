@@ -1,16 +1,27 @@
 const menuItemFormatter = require("../helperfunctions/menuItemFormatter");
 const {formattedMenuPrice} = require("../helperfunctions/menuItemFormatter");
-
+const total = function (prices) {
+  const totalPrice = 0;
+  for(const price of prices) {
+    totalPrice += price;
+  }
+  total
+};
 const makeOrder = function (database, order_ids) {
   const orders = {};
   for (const id of order_ids) {
     orders[id] = [];
     for (const data of database) {
-      const price = formattedMenuPrice(data);
-      const order = {'name': data.name, 'price': price, 'quantity': data.quantity}
-      orders[id].push(order)
+      if(data.order_id === id) {
+        data.price = data.price * data.quantity;
+        price = formattedMenuPrice(data);
+        console.log(price);
+        const order = {'name': data.name, 'price': price, 'quantity': data.quantity}
+        orders[id].push(order)
+      }
     }
   }
+ console.log('all orders:', orders);
   return orders;
 };
 
@@ -21,7 +32,6 @@ const findIds = function (database) {
       orderIds.push(data.order_id);
     }
   }
-  console.log(orderIds);
   return makeOrder(database, orderIds);
 };
 
@@ -30,7 +40,7 @@ module.exports = (router, helpers, db) => {
 
   router.get('/', (req, res) => {
     return db.query(`
-    SELECT orders.id as order_id, menu_items.name, menu_items.price, menu_items.quantity
+    SELECT orders.id as order_id, menu_items.name, menu_items.price, order_menu_items.quantity
     FROM orders
     JOIN order_menu_items ON orders.id = order_id
     JOIN menu_items ON menu_item_id = menu_items.id
@@ -38,7 +48,6 @@ module.exports = (router, helpers, db) => {
     `)
       .then(data => {
         const reformatedData = findIds(data.rows);
-        console.log({orders: reformatedData});
         res.render('admin', {orders: reformatedData});
         return data.rows;
       })
