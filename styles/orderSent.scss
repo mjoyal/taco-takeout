@@ -1,3 +1,16 @@
+#order-sent-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  color: $main-color;
+  justify-content: space-around;
+  align-items: center;
+  h1 {
+    text-align: center;
+    color: black;
+  }
+}
+
 @media (min-width: 1400px) {
 #order-sent-page {
   display: flex;

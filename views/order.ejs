@@ -8,7 +8,7 @@
 
   <body>
     <%- include('partials/_header') %>
-    <div class="page-container">
+    <div class="page-container" id="order-confirmed-page">
       <!-- <div id="order-confirmed-page" class="content-wrap">
         <i class="far fa-check-circle fa-7x"></i>
         <h1>Order confirmed! <br>Your order will be ready in x mins</h1>
@@ -17,7 +17,9 @@
         <i class="far fa-paper-plane fa-7x"></i>
         <h1>Thank you, <%= first_name %>! Your order #<%= order_id %> is sent. <br>Waiting on the restaurant for confirmation… </h1>
       </div>
-      <%- include('partials/_footer') %>
+      <div class="admin-footer">
+        <%- include('partials/_footer') %>
+      </div>
     </div>
   </body>
 </html>
