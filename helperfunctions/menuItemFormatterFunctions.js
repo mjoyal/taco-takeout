@@ -12,10 +12,9 @@ const formattedImageLocation = (item) => {
 };
 
 //Processes Menuitem result data though Menu price formatter and image location formatter
+//emb-refactor?
 const formatMenuItems = (data) => {
-  //console.log(data);
   for (const item in data) {
-    //console.log(data);
     const menuItem = data[item];
     const priceResult = formattedMenuPrice(menuItem);
     menuItem.price = priceResult;
@@ -25,6 +24,7 @@ const formatMenuItems = (data) => {
   return data;
 };
 
+//emb-refactor?
 const formatCartItems = (data) => {
   for (let i = 0; i < data.length; i++) {
     const newTotal = data[i].total * data[i].count;
@@ -33,7 +33,7 @@ const formatCartItems = (data) => {
   }
   return data;
 };
-
+//emb-refactor?
 const calculateCartTotal = (items) => {
   let result = 0;
   const cartItemsArray = (items[2]);

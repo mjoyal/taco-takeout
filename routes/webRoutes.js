@@ -9,11 +9,6 @@ const { app } = require("../server");
 
 function webRoutes(db) {
 
-  // const homeRouter = express.Router();
-  // const homeRoutes = require('./home');
-  // //homeRoutes(homeRouter, menuItemsHelpers);
-  // app.use('/', homeRouter);
-
   const menuItemsRouter = express.Router();
   const menuItemsRoutes = require("./menu_items");
   menuItemsRoutes(menuItemsRouter, menuItemsHelpers, db);

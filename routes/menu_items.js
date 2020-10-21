@@ -1,10 +1,4 @@
-/*
- * All routes for Menu Items are defined here
- * Since this file is loaded in server.js into api/menu_items,
- * these routes are mounted onto /menu_items
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
-
+//Calls menu item query to and re
 module.exports = function(router, menuItemsHelper, db) {
   router.get("/", (req, res) => {
     menuItemsHelper.getAllMenuItems(db)

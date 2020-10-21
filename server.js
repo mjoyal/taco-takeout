@@ -7,7 +7,6 @@ const app = express();
 exports.app = app;
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
-//const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const morgan = require('morgan');

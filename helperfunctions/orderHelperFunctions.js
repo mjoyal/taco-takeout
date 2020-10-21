@@ -1,23 +1,21 @@
-//const db = require('../db/connection/db-conn');
-
+//emb-refactor?
 const removeItemFromCart = (data) => {
   const priceString = (item.price / 100).toFixed(2);
   const priceDollars = `$${priceString}`;
   return priceDollars;
 };
+//emb-refactor?
 const getMenuItemFromCart = function(data, menu_item_id) {
-  //console.log("in helper");
   for (let i = 0; i < data.length; i++) {
     if (data[i].menu_item_id === parseInt(menu_item_id)) {
       return data[i].id;
     }
   }
 };
+//emb-refactor?
 const getMenuItemCountFromCart = function(data, menu_item_id) {
-  //console.log("id", menu_item_id);
   for (let i = 0; i < data.length; i++) {
     if (data[i].menu_item_id === parseInt(menu_item_id)) {
-      //console.log(data[i]);
       return data[i].quantity;
     }
   }

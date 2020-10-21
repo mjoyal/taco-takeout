@@ -1,13 +1,5 @@
-/*
- * All routes for Orders are defined here
- * Since this file is loaded in server.js into api/users,
- *   these routes are mounted onto /users
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
-
 module.exports = (router, helpers, db) => {
-
-  
+  //Query for unplaced order for current user to populate cart on index
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
     return db.query(`

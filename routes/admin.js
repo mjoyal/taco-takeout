@@ -1,31 +1,31 @@
-const menuItemFormatter = require("../helperfunctions/menuItemFormatter");
-const {formattedMenuPrice} = require("../helperfunctions/menuItemFormatter");
-const total = function (prices) {
+const menuItemFormatter = require("../helperfunctions/menuItemFormatterFunctions");
+const { formattedMenuPrice } = require("../helperfunctions/menuItemFormatterFunctions");
+const total = function(prices) {
   const totalPrice = 0;
-  for(const price of prices) {
+  for (const price of prices) {
     totalPrice += price;
   }
-  total
+  total;
 };
-const makeOrder = function (database, order_ids) {
+const makeOrder = function(database, order_ids) {
   const orders = {};
   for (const id of order_ids) {
     orders[id] = [];
     for (const data of database) {
-      if(data.order_id === id) {
+      if (data.order_id === id) {
         data.price = data.price * data.quantity;
         price = formattedMenuPrice(data);
         console.log(price);
-        const order = {'name': data.name, 'price': price, 'quantity': data.quantity}
-        orders[id].push(order)
+        const order = { 'name': data.name, 'price': price, 'quantity': data.quantity };
+        orders[id].push(order);
       }
     }
   }
- console.log('all orders:', orders);
+  console.log('all orders:', orders);
   return orders;
 };
 
-const findIds = function (database) {
+const findIds = function(database) {
   const orderIds = [];
   for (const data of database) {
     if (!orderIds.includes(data.order_id)) {
@@ -48,7 +48,7 @@ module.exports = (router, helpers, db) => {
     `)
       .then(data => {
         const reformatedData = findIds(data.rows);
-        res.render('admin', {orders: reformatedData});
+        res.render('admin', { orders: reformatedData });
         return data.rows;
       })
       .catch(e => {
@@ -64,10 +64,10 @@ module.exports = (router, helpers, db) => {
     WHERE id = $2
     RETURNING *;
     `, [minutes, order_id])
-    .then(data => {
-      res.redirect(`/admin`);
-      return data.rows;
-    })
+      .then(data => {
+        res.redirect(`/admin`);
+        return data.rows;
+      });
   });
 
 };

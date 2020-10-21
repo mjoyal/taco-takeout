@@ -1,3 +1,4 @@
+//API Query
 const getAllMenuCategories = function(db) {
   return db.query(`SELECT * FROM menu_categories`)
     .then((res) => {

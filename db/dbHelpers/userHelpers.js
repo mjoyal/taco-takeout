@@ -1,4 +1,5 @@
-
+//API Query
+//Get all users
 const getAllUsers = function(db) {
   return db.query(`SELECT * FROM users`)
     .then((res) => {
@@ -8,6 +9,7 @@ const getAllUsers = function(db) {
       console.log(err);
     });;
 };
+//Get user by id
 const getUserById = function(id, db) {
   return db.query(`SELECT * FROM users WHERE id =$1`, [id])
     .then((res) => {
