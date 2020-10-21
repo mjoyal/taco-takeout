@@ -1,0 +1,20 @@
+
+#order-page {
+  img {
+    width: 10%;
+  }
+}
+
+@media (min-width: 1400px) {
+#order-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  color: $main-color;
+  h1 {
+    text-align: center;
+    color: black;
+  }
+
+}
+}
