@@ -5,9 +5,9 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-
 module.exports = (router, helpers, db) => {
 
+  
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
     return db.query(`

@@ -1,14 +1,27 @@
+const menuItemFormatter = require("../helperfunctions/menuItemFormatter");
+const {formattedMenuPrice} = require("../helperfunctions/menuItemFormatter");
+const total = function (prices) {
+  const totalPrice = 0;
+  for(const price of prices) {
+    totalPrice += price;
+  }
+  total
+};
 const makeOrder = function (database, order_ids) {
   const orders = {};
   for (const id of order_ids) {
-
     orders[id] = [];
     for (const data of database) {
-      if (data.order_id === id) {
-        orders[id].push(data.name);
+      if(data.order_id === id) {
+        data.price = data.price * data.quantity;
+        price = formattedMenuPrice(data);
+        console.log(price);
+        const order = {'name': data.name, 'price': price, 'quantity': data.quantity}
+        orders[id].push(order)
       }
     }
   }
+ console.log('all orders:', orders);
   return orders;
 };
 
@@ -22,20 +35,19 @@ const findIds = function (database) {
   return makeOrder(database, orderIds);
 };
 
+
 module.exports = (router, helpers, db) => {
 
   router.get('/', (req, res) => {
     return db.query(`
-    SELECT orders.id as order_id, menu_items.name
+    SELECT orders.id as order_id, menu_items.name, menu_items.price, order_menu_items.quantity
     FROM orders
     JOIN order_menu_items ON orders.id = order_id
     JOIN menu_items ON menu_item_id = menu_items.id
     WHERE order_started_at IS NULL;
-    `,)
+    `)
       .then(data => {
         const reformatedData = findIds(data.rows);
-        console.log(reformatedData);
-        console.log({orders: reformatedData});
         res.render('admin', {orders: reformatedData});
         return data.rows;
       })
@@ -44,10 +56,18 @@ module.exports = (router, helpers, db) => {
       });
   });
 
-
-  // router.post('/', (req, res) => {
-  //   const minutes = req.body.waitTime;
-  //   const templateVars = {time: minutes}
-  // });
+  router.post('/', (req, res) => {
+    const minutes = req.body.waitTime;
+    const order_id = req.body.order_id;
+    return db.query(`UPDATE orders
+    SET order_time = $1, order_started_at = Now()
+    WHERE id = $2
+    RETURNING *;
+    `, [minutes, order_id])
+    .then(data => {
+      res.redirect(`/admin`);
+      return data.rows;
+    })
+  });
 
 };
