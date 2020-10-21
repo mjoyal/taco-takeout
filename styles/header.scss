@@ -57,6 +57,13 @@ nav {
 }
 }
 
+@media (min-width: 648px) {
+  nav img {
+    margin-right: 110px;
+  }
+}
+
+
 @media (min-width: 900px) {
 nav {
   display: flex;

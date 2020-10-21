@@ -38,7 +38,7 @@ module.exports = (router, db) => {
   router.get("/orders", (req, res) => {
     db.query(`SELECT * FROM orders;`)
       .then(data => {
-        res.send(data.rows);
+        res.json(data.rows[0]);
       })
       .catch(err => {
         res
@@ -46,6 +46,5 @@ module.exports = (router, db) => {
           .json({ error: err.message });
       });
   });
-
   return router;
 };

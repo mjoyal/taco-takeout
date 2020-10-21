@@ -25,6 +25,18 @@
   }
 }
 
+#admin-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#checkout-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 @media (min-width: 725px) {
 .footer {
   display: flex;
@@ -50,6 +62,18 @@
     line-height: 30px;
   }
 }
+}
+
+#admin-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#checkout-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 #social-logos {
