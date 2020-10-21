@@ -1,11 +1,4 @@
-const { ConversationList } = require("twilio/lib/rest/conversations/v1/conversation");
-
-$(document).ready(function () {
-  // $('.sms').click(function () {
-  //   const $waitTime = $('.wait-time').value;
-  //   timer($waitTime);
-  // });
-  const $timer = $('#timer');
+const $timer = $('#timer');
   const timer = function (minutes) {
     let seconds;
     if(minutes === 1) {
@@ -30,5 +23,6 @@ $(document).ready(function () {
       }
     }, 1000);
   };
-  timer(1);
- });
+
+  module.exports = timer;
+
