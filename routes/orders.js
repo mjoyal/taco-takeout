@@ -1,5 +1,4 @@
 module.exports = (router, helpers, db) => {
-  //Query for unplaced order for current user to populate cart on index
   router.get('/:id', (req, res) => {
     const order_id = req.params.id;
     return db.query(`
@@ -19,6 +18,24 @@ module.exports = (router, helpers, db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get('/:id/status', (req, res) => {
+    const order_id = req.params.id;
+    return db.query(`SELECT order_started_at, order_time
+    FROM orders
+    WHERE orders.id = $1
+    `, [order_id])
+    .then((data) => {
+      res.send(data.rows);
+      return data.rows;
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
+  })
 
 };
 
