@@ -35,7 +35,7 @@ module.exports = (router, helpers, db) => {
     JOIN order_menu_items ON orders.id = order_id
     JOIN menu_items ON menu_item_id = menu_items.id
     WHERE order_started_at IS NULL;
-    `,)
+    `)
       .then(data => {
         const reformatedData = findIds(data.rows);
         console.log({orders: reformatedData});
@@ -50,8 +50,15 @@ module.exports = (router, helpers, db) => {
   router.post('/', (req, res) => {
     const minutes = req.body.waitTime;
     const order_id = req.body.order_id;
-    console.log(order_id);
-    const templateVars = {time: minutes}
+    return db.query(`UPDATE orders
+    SET order_time = $1, order_started_at = Now()
+    WHERE id = $2
+    RETURNING *;
+    `, [minutes, order_id])
+    .then(data => {
+      res.redirect(`/admin`);
+      return data.rows;
+    })
   });
 
 };
