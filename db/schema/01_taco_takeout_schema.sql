@@ -27,7 +27,7 @@ CREATE TABLE menu_items (
   name VARCHAR(50) NOT NULL,
   description VARCHAR(255) NOT NULL,
   image_url VARCHAR(50) NOT NULL,
-  price SMALLINT NOT NULL
+  price INT NOT NULL
 );
 
 CREATE TABLE orders (

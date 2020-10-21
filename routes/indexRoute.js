@@ -2,7 +2,7 @@ const menuItemHelpers = require('../db/dbHelpers/menuItemHelpers');
 const userHelpers = require('../db/dbHelpers/userHelpers');
 const orderHelpers = require('../db/dbHelpers/orderHelpers');
 //const orderItemsHelpers = require("../db/dbHelpers/orderItemsHelpers");
-const menuItemFormatter = require("../helperfunctions/menuItemFormatter");
+const menuItemFormatter = require("../helperfunctions/menuItemFormatterFunctions");
 const { app } = require("../server");
 
 const getIndex = (db) => {
@@ -11,18 +11,22 @@ const getIndex = (db) => {
     const currentUser = userHelpers.getUserById(1, db);
     const currentCartItems = orderHelpers.getUserCart(1, db);
     Promise.all([menuItems, currentUser, currentCartItems]).then(values => {
+      //console.log(values);
       return values;
     }).then(values => {
       values[0] = menuItemFormatter.formatMenuItems(values[0]);
       return values;
     }).then(values => {
-      values[2] = menuItemFormatter.formatMenuItems(values[2]);
+      values[2] = menuItemFormatter.formatCartItems(values[2]);
       return values;
     }).then(values => {
+      //console.log(currentCartItems);
+      const cartTotal = menuItemFormatter.calculateCartTotal(values);
       const templateVars = {
         menu_items: values[0],
         user: values[1],
-        currentCartItems: values[2]
+        currentCartItems: values[2],
+        cartTotal: cartTotal
       };
       res.render('index', templateVars);
     }).catch(e => {

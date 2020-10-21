@@ -102,15 +102,16 @@
             <div class="cart-item">
               <div class="item-price">
                 <h3><%=currentCartItems[currentCartItem]["name"]%></h3>
-                <h3><%=currentCartItems[currentCartItem]["price"]%></h3>
+                <h3>x <%=currentCartItems[currentCartItem]["count"]%></h3>
+                <h3><%=currentCartItems[currentCartItem]["total"]%></h3>
               </div>
-              <form class="form-inline" method="POST" action="/orderitems/remove/<%= currentCartItems[currentCartItem]['id'] %>">
+              <form class="form-inline" method="POST" action="/orderitems/remove/<%= currentCartItems[currentCartItem]['menu_item_id'] %>">
                 <button class='remove-btn'>Remove</button>
               </form>
             </div>
             <% }%>
           </div>
-          <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price">$X.XX</span></a>
+          <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price"><%=cartTotal%></span></a>
         </div>
       </div>
     </main>

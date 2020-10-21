@@ -31,7 +31,7 @@ const indexRoute = require("./routes/indexRoute");
 // Middleware
 
 app.use(express.json());
-//app.use(morgan('dev'));
+app.use(morgan('dev'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
