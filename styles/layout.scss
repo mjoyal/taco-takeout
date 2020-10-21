@@ -64,6 +64,17 @@ main {
 .content-wrap {
   display: flex;
 }
+
+#checkout-center {
+  display: flex;
+  justify-content: center;
+}
+
+#admin-center {
+  display: flex;
+  justify-content: center;
+}
+
 }
 
 @media (min-width: 1280px) {
@@ -96,6 +107,7 @@ main {
   justify-content: space-around;
   align-items: center;
 }
+
 }
 
 @media (min-width: 1400px) {

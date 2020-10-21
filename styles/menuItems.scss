@@ -1,5 +1,5 @@
 /*** Menu Item ***/
-@media (max-width: 619px) {
+@media (max-width: 651px) {
 #all-menu-items {
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
@@ -88,7 +88,7 @@ article {
 }
 }
 
-@media (min-width: 620px) {
+@media (min-width: 652px) {
 #all-menu-items {
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
@@ -175,6 +175,14 @@ article {
   margin-bottom: 15px;
 }
 }
+
+@media (min-width: 940px) {
+  #all-menu-items {
+    max-width: 50%;
+  }
+}
+
+
 
 @media (min-width: 1080px) {
 #all-menu-items {
@@ -271,6 +279,7 @@ article {
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
   width: 60%;
+  max-width: 60%;
   margin-left: 0em;
   h3 {
     font-family: 'Medula One', cursive;

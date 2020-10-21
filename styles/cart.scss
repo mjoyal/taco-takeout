@@ -8,6 +8,9 @@
   border-radius: 30px;
   .top-cart {
     padding: 30px 30px 20px 30px;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     .cart-head {
       color: $main-color;
       padding-bottom: 13px;
@@ -16,6 +19,20 @@
       font-family: 'Medula One', cursive;
     }
   }
+}
+
+.admin-submit {
+  display: flex;
+  justify-content: center;
+  background-color: #1D1ECF;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.remove-btn {
+  background-color: white;
 }
 
 #cart-checkout {
@@ -100,6 +117,12 @@
   }
 }
 
+#position-fix {
+  position: fixed;
+  right: 25px;
+  bottom: 250px;
+}
+
 #cart-checkout {
   padding-top: 35px;
   display: flex;
@@ -163,6 +186,22 @@
 }
 }
 
+@media (min-width: 1000px) {
+  #position-fix {
+    position: fixed;
+    right: 45px;
+    bottom: 250px;
+  }
+}
+
+@media (min-width: 1100px) {
+  #position-fix {
+    position: fixed;
+    right: 70px;
+    bottom: 250px;
+  }
+}
+
 @media (min-width: 1170px) {
   .cart {
     box-shadow: 2px 0px #e8e6e6;
@@ -184,7 +223,7 @@
 
   #position-fix {
     position: fixed;
-    right: 25px;
+    right: 70px;
     bottom: 250px;
   }
 
@@ -273,7 +312,7 @@
 
 #position-fix {
   position: fixed;
-  right: 51px;
+  right: 70px;
   bottom: 250px;
 }
 
@@ -354,7 +393,7 @@
 
 #position-fix {
   position: fixed;
-  right: 51px;
+  right: 70px;
   bottom: 250px;
 }
 

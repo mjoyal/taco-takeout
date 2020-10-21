@@ -9,7 +9,7 @@
 <body>
   <%- include('partials/_header') %>
   <div class="page-container">
-    <div class="content-wrap">
+    <div class="content-wrap" id="admin-center">
       <div id="cart-admin">
         <%for(const order in orders) {%>
         <div class="cart">
@@ -25,11 +25,13 @@
             </div>
             <%}%>
           </div>
+          <div class="admin-submit">
           <form action="/admin" method="POST">
             <input type="number" class="wait-time" name="waitTime">
             <input type="submit" value="submit" class="testing"> <!--change back to class sms -->
             <input type="hidden" name="order_id" value="<%=order%>">
             </form>
+          </div>
           </div>
           <%}%>
         </div>
