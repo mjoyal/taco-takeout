@@ -7,7 +7,7 @@ const makeOrder = function (database, order_ids) {
     orders[id] = [];
     for (const data of database) {
       const price = formattedMenuPrice(data);
-      const order = {'name': data.name, 'price': price}
+      const order = {'name': data.name, 'price': price, 'quantity': data.quantity}
       orders[id].push(order)
     }
   }
@@ -30,7 +30,7 @@ module.exports = (router, helpers, db) => {
 
   router.get('/', (req, res) => {
     return db.query(`
-    SELECT orders.id as order_id, menu_items.name, menu_items.price
+    SELECT orders.id as order_id, menu_items.name, menu_items.price, menu_items.quantity
     FROM orders
     JOIN order_menu_items ON orders.id = order_id
     JOIN menu_items ON menu_item_id = menu_items.id
