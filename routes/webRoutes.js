@@ -21,7 +21,7 @@ function webRoutes(db) {
 
   const orderItemsRouter = express.Router();
   const orderItemsRoutes = require("./order_items");
-  orderItemsRoutes(orderItemsRouter, orderItemsHelpers);
+  orderItemsRoutes(orderItemsRouter, orderItemsHelpers, db);
   app.use('/orderitems', orderItemsRouter);
 
   const menuCategoriesRouter = express.Router();

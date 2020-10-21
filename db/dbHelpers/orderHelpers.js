@@ -4,9 +4,7 @@ const getAllOrders = function(db) {
     .then((res) => {
       console.log(res.rows);
       return res.rows;
-    }).then((res) => {
-      db.release();
-    });;
+    });
 };
 
 const getUserCart = function(user_id, db) {
