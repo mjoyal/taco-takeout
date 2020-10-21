@@ -1,4 +1,117 @@
-LHL Node Skeleton
+# Taco Takeout online ordering for pickup orders
+
+![Taco Takeout banner](./assets/login.png)
+
+## Project Contributors and primary responsibilities
+* Mackenzie Joyal
+  * Front end design & development
+  * Login and checkout functionality
+  * Back end development
+  
+* Bryn Schulha
+  * Twillio API research and implementation
+  * Front end design and development
+ 
+* Eddy Bussiere
+  * Database design and 
+  * Back end development
+  * Front end development
+
+## What does it do?
+
+This app allows a user to place an online order with Taco Takeout.
+
+## User Stories
+* As a user I want to visit a website so I can view a restaurant’s menu.
+* As a user I want to see cart contents as I add items so I can review items and quantities.
+* As a user I want to place an order from a viewed restaurant so I can pick it up.
+* As a user I want to be notified by SMS that the restaurant has received my order and be given the time when my order is expected to be ready so I can plan to arrive on time.
+* As a user I want to be notified by SMS that my order is ready so I can wait in the car if I arrive early
+
+* As a restaurant owner I want to post my menu items on a website to increase pickup order sales.
+* As a restaurant owner I want to receive notifications by SMS of incoming orders so preparation can begin.
+* As a restaurant owner I want to notify customers by SMS of order receipt and provide an accurate estimate of pickup time so they can plan their route.
+* As a restaurant owner I want to notify customers by SMS that their order is ready for pickup so they can wait in their vehicle if they arrive early.       
+
+## Endpoints
+* app.get('/api/users/', registered users);
+* app.get('/api/orders/' existing orders)
+* app.get('/api/menuitems/', available menuitems);
+* app.get('/api/menucategories/', available menu categories);
+(Add the rest from the app functions)
+
+
+
+
+## Login/Register
+
+* Login with valid credentials or register as a new user 
+
+![enter image description here](./assets/login.png)
+
+## Home page
+* Displays a list.
+* Displays some basic analytics for each entry (see TODOs)
+* The logged in use can edit the target of each entry or delete an entry if no longer required.
+* A form for adding new shortened URLs can be accessed via the "Create New URL" item in the navigation bar.
+### TODO
+* Add analytics to indicate unique users for each tiny URL followed  
+![enter image description here](./assets/index.png)
+
+## Create New Tiny URL
+* Used to create additional shortened URLs
+* User redirected to Index after successfuly creating a new link 
+### TODO
+* Target URL validation is currently handled by the HTML of the page. Would like to validate using the back end.   
+
+![enter image description here](./assets/new.png)
+
+## Edit
+* Used to edit the target of any existing Tiny URL
+* User redirected to Index after successfuly editing an itemnk 
+### TODO
+* Target URL validation is currently handled by the HTML of the page. Would like to validate using the back end.
+
+![enter image description here](./assets/edit.png)
+
+## Dependencies
+- Node 10.x or above
+- NPM 5.x or above
+- PG 6.x
+- EJS
+- Twillio
+
+
+## Getting Started
+
+- Install all dependencies listed above
+```bash
+npm install
+```
+- Run the development web server 
+```bash
+node express_server.js
+```
+or to run using nodemon
+```bash
+npm start
+```
+To run using nodemon
+
+App runs at: http://localhost:8080/
+
+## TODO
+
+1. Use .env file. 
+1. Combine auth routes 
+2. Provide code comments for future developers/maintenance. 
+3. Publish to Azure.
+
+
+
+
+
+<!-- LHL Node Skeleton
 =========
 
 ## Project Setup
@@ -40,4 +153,4 @@ The following steps are only for _one_ of the group members to perform.
 
 - Node 10.x or above
 - NPM 5.x or above
-- PG 6.x
+- PG 6.x -->
