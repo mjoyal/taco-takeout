@@ -39,6 +39,10 @@ article {
       padding: 20px 0px;
       font-family: 'Roboto', sans-serif;
   }
+  .dish-btn {
+    display: flex;
+    justify-content: flex-end;
+  }
   .price {
     font-size: 28px;
   }
@@ -122,6 +126,10 @@ article {
   .item-description {
       padding: 20px 0px;
       font-family: 'Roboto', sans-serif;
+  }
+  .dish-btn {
+    display: flex;
+    justify-content: flex-end;
   }
   .price {
     font-size: 28px;
@@ -207,7 +215,8 @@ article {
       font-family: 'Roboto', sans-serif;
   }
   .dish-btn {
-    padding-left: 530px;
+    display: flex;
+    justify-content: flex-end;
   }
   .price {
     font-size: 28px;
@@ -296,7 +305,8 @@ article {
       font-family: 'Roboto', sans-serif;
   }
   .dish-btn {
-    padding-left: 128px;
+    display: flex;
+    justify-content: flex-end;
   }
   .price {
     font-size: 28px;
