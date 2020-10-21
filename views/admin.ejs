@@ -15,15 +15,19 @@
         <div class="cart">
           <div class="top-cart">
             <h3 class="cart-head">Order # <%=order%></h3>
-            <% for(const item of orders[order]) { %>
-            <div class="cart-item">
-              <div class="item-price">
-                <h3><%=item.quantity%>x</h3>
-                <h3><%=item.name%></h3>
-                <h3><%=item.price%></h3>
+            <% for(const entry of orders[order].items) { %>
+              <div class="cart-item">
+                <div class="item-price">
+                  <h3><%=entry.quantity%>x</h3>
+                  <h3><%=entry.name%></h3>
+                  <h3><%=entry.price%></h3>
+                </div>
               </div>
+              <%}%>
+            <div class="cart-total">
+              <h3>Total</h3>
+              <h3><%=orders[order].total%></h3>
             </div>
-            <%}%>
           </div>
           <div class="admin-submit">
           <form action="/admin" method="POST">

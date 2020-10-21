@@ -48,5 +48,49 @@ const calculateCartTotal = (items) => {
   return priceDollars;
 };
 
-module.exports = { formatMenuItems, calculateCartTotal, formatCartItems, formattedImageLocation, formattedMenuPrice };
+
+const total = function (prices) {
+  let totalPrice = 0;
+  for (const price of prices) {
+    totalPrice += price;
+  }
+  return formattedMenuPrice({'price': totalPrice});
+};
+
+const makeOrder = function (database, order_ids) {
+  const orders = {};
+  for (const id of order_ids) {
+    orders[id] = { items: "", total: "" };
+    orders[id].items = [];
+    const prices = [];
+    for (const data of database) {
+      if (data.order_id === id) {
+        data.price = data.price * data.quantity;
+        prices.push(data.price);
+        price = formattedMenuPrice(data);
+        const order = {
+          name: data.name,
+          price: price,
+          quantity: data.quantity
+        };
+        orders[id]["items"].push(order);
+      }
+
+    }
+   orders[id].total = total(prices);
+  }
+  return orders;
+};
+
+const findIds = function (database) {
+  const orderIds = [];
+  for (const data of database) {
+    if (!orderIds.includes(data.order_id)) {
+      orderIds.push(data.order_id);
+    }
+  }
+  return makeOrder(database, orderIds);
+};
+
+module.exports = { formatMenuItems, calculateCartTotal, formatCartItems, formattedImageLocation, formattedMenuPrice, findIds};
 
