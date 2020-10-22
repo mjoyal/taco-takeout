@@ -8,7 +8,7 @@ module.exports = (router, helpers, db) => {
     WHERE orders.id = $1
     `, [order_id])
       .then((data) => {
-        console.log(data.rows[0]);
+        //console.log(data.rows[0]);
         res.render('order', data.rows[0]);
         return data.rows;
       })

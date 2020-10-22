@@ -16,64 +16,81 @@ module.exports = function(router, helpers) {
       });
   });
 
+
+  // Add item to order
   // Add item to order
   router.post('/add/:id', function(req, res) {
     const menu_item_id = req.params.id;
     console.log("rp: ", req.params.id);
     const user_id = 1;
-    helpers.getUserCartData(user_id).then(data => {
-      //console.log("data: ", data);
-      return data;
-    })
-      .then(data => {
-        console.log("data: ", data);
+    let order_id = 0;
+    let cartData = 0;
+    helpers.getUserOpenOrder(user_id).then((data) => {
+      if (!data) {
+        //console.log("no data");
+      }
+
+      console.log("data: ", data[0].id);
+      order_id = data[0].id;
+      helpers.getUserCartData(user_id, data[0].id).then(data => {
         if (data.length === 0) {
-          console.log("data: empty");
-          helpers.createCart(menu_item_id);
+          cartData = [];
+        }
+        cartData = data;
+        //console.log("Cart data: ", data);
+
+        return data;
+      }).then(data => {
+        if (cartData.length === 0) {
+          helpers.createCart(order_id, menu_item_id);
         } else {
           const orderItemExists = orderHelperFunctions.getMenuItemFromCart(data, menu_item_id);
           //console.log(orderItemExists);
           if (orderItemExists) {
+            //console.log(orderItemExists);
             helpers.incrementCartItem(db, data, menu_item_id);
           } else {
             helpers.addCartItem(db, data, menu_item_id);
           }
         }
-      })
+      });
+      return data;
+    })
       .then(
         res.redirect('/')
       ).catch(err => {
         //res.send(err);
       });
   });
+
   router.post('/remove/:id', function(req, res) {
     //console.log("req", req.params.id);
     const menu_item_id = req.params.id;
     const user_id = 1;
-    helpers.getUserCartData(user_id)
-      .then(data => {
-
-        return data;
-      })
-      .then(data => {
-        //console.log(data);
-        const orderItemCount = orderHelperFunctions.getMenuItemCountFromCart(data, menu_item_id);
-        if (orderItemCount > 1) {
-          helpers.decrementCartItem(db, data, menu_item_id);
-        } else {
-          helpers.removeCartItem(db, data, menu_item_id);
-        }
-      }
-      )
-      .then(
-        res.redirect('/')
-      ).catch(err => {
-        // res
-        //   .status(500)
-        //   .json({ error: err.message });
-      });
-    // );
+    helpers.getUserOpenOrder(user_id).then((data) => {
+      //console.log("data: ", data[0].id);
+      helpers.getUserCartData(user_id, data[0].id)
+        .then(data => {
+          return data;
+        })
+        .then(data => {
+          //console.log(data);
+          const orderItemCount = orderHelperFunctions.getMenuItemCountFromCart(data, menu_item_id);
+          if (orderItemCount > 1) {
+            helpers.decrementCartItem(db, data, menu_item_id);
+          } else {
+            helpers.removeCartItem(db, data, menu_item_id);
+          }
+        });
+    }).then((data) => {
+      res.redirect('/');
+    }).catch(err => {
+      // res
+      //   .status(500)
+      //   .json({ error: err.message });
+    });
   });
+
 
 
   router.get('/:id', (req, res) => {
@@ -85,7 +102,7 @@ module.exports = function(router, helpers) {
     WHERE orders.id = $1
     `, [order_id])
       .then((data) => {
-        console.log(data.rows[0]);
+        //console.log(data.rows[0]);
         res.render('order', data.rows[0]);
         return data.rows;
       })
@@ -97,5 +114,3 @@ module.exports = function(router, helpers) {
   });
   return router;
 };
-
-

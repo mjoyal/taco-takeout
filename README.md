@@ -48,4 +48,4 @@ updates with admin approval of order, shows live countdown
 
 - Node 10.x or above
 - NPM 5.x or above
-- PG 6.x
+- PG 6.x -->
