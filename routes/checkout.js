@@ -34,7 +34,8 @@ module.exports = (router /*, helpers*/, db) => {
           user: values[1],
           currentCartItems: values[2],
           cartHasItems: cartHasItems,
-          cartTotal: cartTotal
+          cartTotal: cartTotal,
+          order_id: values[2][0].order_id
         };
         //console.log(templateVars);
         return values;
@@ -46,4 +47,21 @@ module.exports = (router /*, helpers*/, db) => {
       });
     });
   });
+
+
+
+  router.post('/orderID', (req, res) => {
+    const order_id = req.body.order_id;
+    return db.query(`UPDATE orders
+    SET order_placed_at = Now()
+    WHERE id = $1
+    RETURNING *;
+    `, [order_id])
+      .then(data => {
+        res.redirect(`/order/${order_id}`);
+        return data.rows;
+      });
+  });
+
+
 };
