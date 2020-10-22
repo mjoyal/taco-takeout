@@ -1,14 +1,14 @@
 const db = require('../connection/db-conn');
 
 const getUserCartData = function(user_id, order_id) {
-  console.log("in Helper", user_id, order_id);
+
   return db.query(`
   SELECT order_menu_items.id, order_menu_items.order_id, order_menu_items.menu_item_id, menu_items.name,menu_items.price, order_menu_items.quantity FROM orders
 JOIN order_menu_items ON orders.id = order_menu_items.order_id
 JOIN menu_items ON order_menu_items.menu_item_id=menu_items.id
 WHERE orders.user_id=$1 AND orders.order_placed_at IS NULL AND order_menu_items.order_id=$2`, [user_id, order_id])
     .then((res) => {
-      console.log(res.rows);
+      //console.log(res.rows);
       return res.rows;
     }).catch((e) => {
       console.log(e);
@@ -145,8 +145,8 @@ const getUserOpenOrder = function(user_id) {
     .then((res) => {
       if (res.rowCount === 0) {
         createNewOrder(user_id).then((res) => {
-          console.log(res.rowCount);
-          //return res.rows;
+          //console.log(res.rowCount);
+          return res.rows;
         });
       }
       return res.rows;
