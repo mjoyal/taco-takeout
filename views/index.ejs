@@ -105,8 +105,8 @@
             <% for(const currentCartItem in currentCartItems) { %>
             <div class="cart-admin">
               <div class="item-price">
-                <h3><%=currentCartItems[currentCartItem]["count"]%>x</h3>
-                <h3><%=currentCartItems[currentCartItem]["name"]%></h3>
+                <h3>x <%=currentCartItems[currentCartItem]["count"]%></h3>
+                <h3 id="align-item-name"><%=currentCartItems[currentCartItem]["name"]%></h3>
                 <h3><%=currentCartItems[currentCartItem]["total"]%></h3>
               </div>
               <form class="form-inline" method="POST" action="/orderitems/remove/<%= currentCartItems[currentCartItem]['menu_item_id'] %>">
