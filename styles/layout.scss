@@ -35,6 +35,11 @@ main {
   display: contents;
 }
 
+#admin-center {
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 940px) {
 html {
   box-sizing: border-box;

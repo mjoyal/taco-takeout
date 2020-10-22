@@ -12,7 +12,7 @@
     <div class="content-wrap" id="admin-center">
       <div id="cart-admin">
         <%for(const order in orders) {%>
-        <div class="cart">
+        <div class="cart" id="single-cart-admin">
           <div class="top-cart">
             <h3 class="cart-head">Order # <%=order%></h3>
             <% for(const entry of orders[order].items) { %>
@@ -29,10 +29,13 @@
               <h3><%=orders[order].total%></h3>
             </div>
           </div>
-          <div class="admin-submit">
+          <div class="submit-time">
+            <p>Estimated Prep Time</p>
           <form action="/admin" method="POST">
             <input type="number" class="wait-time" name="waitTime">
-            <input type="submit" value="submit" class="sms"> <!--change back to class sms -->
+            </div>
+            <div class="admin-submit">
+            <input type="submit" value="Confirm Order" class="sms"> <!--change back to class sms -->
             <input type="hidden" name="order_id" value="<%=order%>">
             </form>
           </div>
