@@ -11,6 +11,7 @@
   <%- include('partials/_header') %>
   <div class="page-container">
     <div class="content-wrap" id="admin-center">
+      <%if(Object.keys(orders).length) {%>
       <div id="cart-admin">
         <%for(const order in orders) {%>
         <div class="cart" id="single-cart-admin">
@@ -41,6 +42,12 @@
             </form>
           </div>
           </div>
+          <%}%>
+          <%} else{%>
+            <div>
+
+              <h3 style="margin: 5em; color: #1D1ECF; font-size: 2em; font-weight: 400; text-align: center;">No pending orders.</h3>
+            </div>
           <%}%>
         </div>
       </div>
