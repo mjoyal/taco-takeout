@@ -1,153 +1,48 @@
-# Taco Takeout online ordering for pickup orders
-
-![Taco Takeout banner](./assets/login.png)
-
-## Project Contributors and primary responsibilities
-* Mackenzie Joyal
-  * Front end design & development
-  * Login and checkout functionality
-  * Back end development
-  
-* Bryn Schulha
-  * Twillio API research and implementation
-  * Front end design and development
- 
-* Eddy Bussiere
-  * Database design and 
-  * Back end development
-  * Front end development
-
-## What does it do?
-
-This app allows a user to place an online order with Taco Takeout.
-
-## User Stories
-* As a user I want to visit a website so I can view a restaurant’s menu.
-* As a user I want to see cart contents as I add items so I can review items and quantities.
-* As a user I want to place an order from a viewed restaurant so I can pick it up.
-* As a user I want to be notified by SMS that the restaurant has received my order and be given the time when my order is expected to be ready so I can plan to arrive on time.
-* As a user I want to be notified by SMS that my order is ready so I can wait in the car if I arrive early
-
-* As a restaurant owner I want to post my menu items on a website to increase pickup order sales.
-* As a restaurant owner I want to receive notifications by SMS of incoming orders so preparation can begin.
-* As a restaurant owner I want to notify customers by SMS of order receipt and provide an accurate estimate of pickup time so they can plan their route.
-* As a restaurant owner I want to notify customers by SMS that their order is ready for pickup so they can wait in their vehicle if they arrive early.       
-
-## Endpoints
-* app.get('/api/users/', registered users);
-* app.get('/api/orders/' existing orders)
-* app.get('/api/menuitems/', available menuitems);
-* app.get('/api/menucategories/', available menu categories);
-(Add the rest from the app functions)
-
-
-
-
-## Login/Register
-
-* Login with valid credentials or register as a new user 
-
-![enter image description here](./assets/login.png)
-
-## Home page
-* Displays a list.
-* Displays some basic analytics for each entry (see TODOs)
-* The logged in use can edit the target of each entry or delete an entry if no longer required.
-* A form for adding new shortened URLs can be accessed via the "Create New URL" item in the navigation bar.
-### TODO
-* Add analytics to indicate unique users for each tiny URL followed  
-![enter image description here](./assets/index.png)
-
-## Create New Tiny URL
-* Used to create additional shortened URLs
-* User redirected to Index after successfuly creating a new link 
-### TODO
-* Target URL validation is currently handled by the HTML of the page. Would like to validate using the back end.   
-
-![enter image description here](./assets/new.png)
-
-## Edit
-* Used to edit the target of any existing Tiny URL
-* User redirected to Index after successfuly editing an itemnk 
-### TODO
-* Target URL validation is currently handled by the HTML of the page. Would like to validate using the back end.
-
-![enter image description here](./assets/edit.png)
-
-## Dependencies
-- Node 10.x or above
-- NPM 5.x or above
-- PG 6.x
-- EJS
-- Twillio
-
-
-## Getting Started
-
-- Install all dependencies listed above
-```bash
-npm install
-```
-- Run the development web server 
-```bash
-node express_server.js
-```
-or to run using nodemon
-```bash
-npm start
-```
-To run using nodemon
-
-App runs at: http://localhost:8080/
-
-## TODO
-
-1. Use .env file. 
-1. Combine auth routes 
-2. Provide code comments for future developers/maintenance. 
-3. Publish to Azure.
-
-
-
-
-
-<!-- LHL Node Skeleton
+![taco](./public/images/taco-favicon.png) Taco Takeout - Online ordering for Pickup
 =========
 
-## Project Setup
+A food ordering experience for a single restaurant (Taco Takeout). Customers can visit this website, select one or more dishes and place an order for pick-up. They will receive a text notification when their order is ready.
 
-The following steps are only for _one_ of the group members to perform.
+When an order is placed the restaurant receives the order via SMS. The restaurant can then specify how long it will take to fulfill it via the admin screen. Once they provide this information, the website updates for the client and also notifies them via SMS.
 
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
+This app uses the Twilio API service to implement SMS commuication from the website to the customer and restaurant. 
 
+## Screenshots 
+### Order screen
+shows menu items and a cart that updates with every item add and remove
+![Order screen showing menu items and a cart that updates with every item add and remove.](./public/images/order-page.png)
+### Order confirmed page
+updates with admin approval of order, shows live countdown
+![Order confirmed page, updates with admin approval of order, shows live countdown.](./public/images/order-confirmed-page.png)
+
+## Project Contributors and Primary Responsibilities
+
+* MacKenzie Joyal
+  * Front end design and development
+  * Back end development
+* Bryn Schulha
+  * Twilio API research and implementation
+  * Front end design and development 
+* Eddy Bussiere 
+  * Database design
+  * Back end Development
+
+## Built With
+
+* Express and Node.js
+* jQuery 
+* EJS templating 
+* SCSS
 
 ## Getting Started
 
-1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information 
-  - username: `labber` 
-  - password: `labber` 
-  - database: `midterm`
-3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Reset database: `npm run db:reset`
+1. Install dependencies: `npm i`
+2. Fix to binaries for sass: `npm rebuild node-sass`
+3. Reset database: `npm run db:reset`
   - Check the db folder to see what gets created and seeded in the SDB
-7. Run the server: `npm run local`
+4. Run the server: `npm run local`
   - Note: nodemon is used, so you should not have to restart your server
-8. Visit `http://localhost:8080/`
-
-## Warnings & Tips
-
-- Do not edit the `layout.css` file directly, it is auto-generated by `layout.scss`
-- Split routes into their own resource-based file names, as demonstrated with `users.js` and `widgets.js`
-- Split database schema (table definitions) and seeds (inserts) into separate files, one per table. See `db` folder for pre-populated examples. 
-- Use the `npm run db:reset` command each time there is a change to the database schema or seeds. 
-  - It runs through each of the files, in order, and executes them against the database. 
-  - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them.
+5. Visit `http://localhost:8080/`
 
 ## Dependencies
 

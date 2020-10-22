@@ -4,7 +4,9 @@
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 3em;
+  height: 45px;
   a {
     color: $main-color;
     text-decoration: none;
@@ -22,7 +24,7 @@ nav {
 }
 
 .logout {
-  padding-top: 40px;
+  padding-top: 25px;
   padding-right: 10px;
 }
 
@@ -30,6 +32,7 @@ nav {
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 3em;
   a {
     color: $main-color;
@@ -52,7 +55,7 @@ nav {
 }
 
 .logout {
-  padding-top: 40px;
+  padding-top: 25px;
   padding-right: 10px;
 }
 }
@@ -89,7 +92,7 @@ nav {
 }
 
 .logout {
-  padding-top: 40px;
+  padding-top: 25px;
   padding-right: 10px;
 }
 }
@@ -120,7 +123,7 @@ nav {
 }
 
 .logout {
-  padding-top: 40px;
+  padding-top: 25px;
   padding-right: 10px;
 }
 }

@@ -95,7 +95,7 @@
         <% }%>
       </div>
       <div class="cart-container">
-        <div id="position-fix" class="cart">
+        <div class="position-fix cart">
           <div class="top-cart">
             <h3 class="cart-head">Your Order</h3>
             <% for(const currentCartItem in currentCartItems) { %>
@@ -114,6 +114,17 @@
           <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price"><%=cartTotal%></span></a>
         </div>
       </div>
+
+      <!-- if cart empty display empty cart view -->
+        <!-- <div>
+        <%- include('partials/_emptycart') %>
+        </div> -->
+
+
+      <!-- if cart contains items hide cart empty view -->
+        <div class="hide-empty">
+        <%- include('partials/_emptycart') %>
+        </div>
     </main>
 
 

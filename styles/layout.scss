@@ -4,8 +4,7 @@
 @import 'footer.scss';
 @import 'menuItems.scss';
 @import 'cart.scss';
-@import 'orderSent.scss';
-@import 'orderConfirmed.scss';
+@import 'order.scss';
 
 html {
   box-sizing: border-box;
@@ -34,6 +33,11 @@ main {
 
 .content-wrap {
   display: contents;
+}
+
+#admin-center {
+  display: flex;
+  justify-content: center;
 }
 
 @media (min-width: 940px) {
