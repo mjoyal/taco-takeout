@@ -2,7 +2,7 @@
 const getAllOrders = function(db) {
   return db.query(`SELECT * FROM orders`)
     .then((res) => {
-      console.log(res.rows);
+      //console.log(res.rows);
       return res.rows;
     });
 };
@@ -19,6 +19,6 @@ GROUP BY order_menu_items.order_id,orders.id,order_menu_items.menu_item_id,menu_
       return res.rows;
     }).catch(err => {
       console.log(err);
-    });;
+    });
 };
 module.exports = { getAllOrders, getUserCart };

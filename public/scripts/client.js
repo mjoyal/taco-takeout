@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
   const getOrderStatus = () => {
     $.ajax({
@@ -6,7 +6,7 @@ $(document).ready(function () {
       method: 'GET',
       dataType: 'json',
       success: (data) => {
-        console.log('request')
+        console.log('request');
         console.log(data);
       },
       error: (error) => {
@@ -23,12 +23,12 @@ $(document).ready(function () {
 
 
 
- $('.add-item-btn').click(function () {
+  $('.add-item-btn').click(function() {
     console.log('clicked');
- });
+  });
 
- $('.testing').click(function (event) {
-   console.log($(event.target).parentsUntil('.cart'));
+  $('.testing').click(function(event) {
+    console.log($(event.target).parentsUntil('.cart'));
   });
 
 });

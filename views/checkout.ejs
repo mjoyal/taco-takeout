@@ -5,11 +5,12 @@
   <title>Checkout</title>
   <%- include('partials/_head') %>
 </head>
-  <body>
-    <%- include('partials/_header') %>
-    <div class="page-container">
-      <div class="content-wrap" id="checkout-center">
-        <div id="cart-checkout">
+
+<body>
+  <%- include('partials/_header') %>
+  <div class="page-container">
+    <div class="content-wrap" id="checkout-center">
+      <div id="cart-checkout">
         <div class="cart">
           <div class="top-cart">
             <h3 class="cart-head">Your Order</h3>
@@ -17,14 +18,15 @@
             <%- include('partials/_cartItems') %>
             <%- include('partials/_cartItems') %>
           </div>
-            <a href="/order-sent" id="sms-button" class="checkout-btn"><span class="order-btn">Confirm Order</span><span class="total-price">$X.XX</span></a>
+          <a href="/order-sent" id="sms-button" class="checkout-btn"><span class="order-btn">Confirm Order</span><span class="total-price">$X.XX</span></a>
         </div>
-        </div>
-      </div>
-      <div id="checkout-footer">
-        <%- include('partials/_footer') %>
       </div>
     </div>
+    <div id="checkout-footer">
+      <%- include('partials/_footer') %>
+    </div>
+  </div>
 
-  </body>
+</body>
+
 </html>

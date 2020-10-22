@@ -94,15 +94,19 @@
         <% }%>
         <% }%>
       </div>
+      <% if(cartHasItems==0) {%>
+      <%- include('partials/_emptycart') %>
+      <% } %>
+      <% if(cartHasItems==1) {%>
       <div class="cart-container">
         <div id="position-fix" class="cart">
           <div class="top-cart">
             <h3 class="cart-head">Your Order</h3>
             <% for(const currentCartItem in currentCartItems) { %>
-            <div class="cart-item">
+            <div class="cart-admin">
               <div class="item-price">
+                <h3><%=currentCartItems[currentCartItem]["count"]%>x</h3>
                 <h3><%=currentCartItems[currentCartItem]["name"]%></h3>
-                <h3>x <%=currentCartItems[currentCartItem]["count"]%></h3>
                 <h3><%=currentCartItems[currentCartItem]["total"]%></h3>
               </div>
               <form class="form-inline" method="POST" action="/orderitems/remove/<%= currentCartItems[currentCartItem]['menu_item_id'] %>">
@@ -114,11 +118,9 @@
           <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price"><%=cartTotal%></span></a>
         </div>
       </div>
+      <% }%>
     </main>
-
-
     <%- include('partials/_footer') %>
-
   </div>
 </body>
 
