@@ -6,7 +6,6 @@ const ordersHelpers = require('../db/dbHelpers/orderHelpers');
 const orderItemsHelpers = require('../db/dbHelpers/orderItemsHelpers');
 const { app } = require("../server");
 
-
 function webRoutes(db) {
 
   const menuItemsRouter = express.Router();

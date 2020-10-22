@@ -2,7 +2,6 @@
 const getAllOrders = function(db) {
   return db.query(`SELECT * FROM orders`)
     .then((res) => {
-      //console.log(res.rows);
       return res.rows;
     });
 };

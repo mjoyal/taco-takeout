@@ -21,7 +21,7 @@ module.exports = function(router, helpers) {
   // Add item to order
   router.post('/add/:id', function(req, res) {
     const menu_item_id = req.params.id;
-    console.log("rp: ", req.params.id);
+    //console.log("rp: ", req.params.id);
     const user_id = 1;
     let order_id = 0;
     let cartData = 0;
@@ -30,7 +30,7 @@ module.exports = function(router, helpers) {
         //console.log("no data");
       }
 
-      console.log("data: ", data[0].id);
+      //console.log("data: ", data[0].id);
       order_id = data[0].id;
       helpers.getUserCartData(user_id, data[0].id).then(data => {
         if (data.length === 0) {
@@ -57,9 +57,11 @@ module.exports = function(router, helpers) {
       return data;
     })
       .then(
-        res.redirect('/')
+        setTimeout(function() {
+          res.redirect('/');
+        }, 1000)
       ).catch(err => {
-        //res.send(err);
+        res.send(err);
       });
   });
 
@@ -82,8 +84,10 @@ module.exports = function(router, helpers) {
             helpers.removeCartItem(db, data, menu_item_id);
           }
         });
-    }).then((data) => {
-      res.redirect('/');
+    }).then(() => {
+      setTimeout(function() {
+        res.redirect('/');
+      }, 1000);
     }).catch(err => {
       // res
       //   .status(500)

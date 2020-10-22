@@ -6,7 +6,7 @@ $(document).ready(function() {
       method: 'GET',
       dataType: 'json',
       success: (data) => {
-        console.log('request');
+        //console.log('request');
         console.log(data);
       },
       error: (error) => {
@@ -15,20 +15,4 @@ $(document).ready(function() {
     });
   };
   getOrderStatus();
-
-
-
-
-
-
-
-
-  $('.add-item-btn').click(function() {
-    console.log('clicked');
-  });
-
-  $('.testing').click(function(event) {
-    console.log($(event.target).parentsUntil('.cart'));
-  });
-
 });
