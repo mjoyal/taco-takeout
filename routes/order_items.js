@@ -10,9 +10,7 @@ module.exports = function(router, helpers) {
         res.json({ orders });
       })
       .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        res.status(500);
       });
   });
 
@@ -26,11 +24,6 @@ module.exports = function(router, helpers) {
     let order_id = 0;
     let cartData = 0;
     helpers.getUserOpenOrder(user_id).then((data) => {
-      if (!data) {
-        //console.log("no data");
-      }
-
-      //console.log("data: ", data[0].id);
       order_id = data[0].id;
       helpers.getUserCartData(user_id, data[0].id).then(data => {
         if (data.length === 0) {
@@ -61,7 +54,7 @@ module.exports = function(router, helpers) {
           res.redirect('/');
         }, 1000)
       ).catch(err => {
-        res.send(err);
+        res.status(500);
       });
   });
 
@@ -89,9 +82,7 @@ module.exports = function(router, helpers) {
         res.redirect('/');
       }, 1000);
     }).catch(err => {
-      // res
-      //   .status(500)
-      //   .json({ error: err.message });
+      res.status(500);
     });
   });
 

@@ -13,7 +13,7 @@ module.exports = function(router, helper, db) {
         res.json(data);
       })
       .catch(e => {
-        res.send(e);
+        res.status(500);
       });
   });
   return router;

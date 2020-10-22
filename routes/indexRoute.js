@@ -42,7 +42,7 @@ const getIndex = (db) => {
         res.render('index', templateVars);
         return values;
       }).catch(e => {
-        res.send(e);
+        res.status(500);
       });
     });
   });

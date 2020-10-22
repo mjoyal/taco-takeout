@@ -42,7 +42,7 @@ module.exports = (router /*, helpers*/, db) => {
         res.render('checkout', templateVars);
         return values;
       }).catch(e => {
-        res.send(e);
+        res.status(500);
       });
     });
   });

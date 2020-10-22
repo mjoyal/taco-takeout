@@ -60,6 +60,12 @@ const addCartItem = function(db, data, menu_item_id) {
     });;
 };
 
+// db.insert(myawesomeRecord)
+//   .then(function(insertedRectordActual) {
+//     magic response;
+//   }).catch(function(err) {
+//     fuck;
+//   });
 //Remove item from cart if quantity 0
 const removeCartItem = function(db, data, menu_item_id) {
   const menu_id_int = parseInt(menu_item_id);

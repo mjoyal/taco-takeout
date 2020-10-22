@@ -1,5 +1,5 @@
 const menuItemFormatter = require("../helperfunctions/menuItemFormatterFunctions");
-const {findIds } = require("../helperfunctions/menuItemFormatterFunctions");
+const { findIds } = require("../helperfunctions/menuItemFormatterFunctions");
 
 module.exports = (router, helpers, db) => {
 

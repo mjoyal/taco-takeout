@@ -13,9 +13,7 @@ module.exports = (router, helpers, db) => {
         return data.rows;
       })
       .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+        res.status(500);
       });
   });
 
@@ -25,17 +23,17 @@ module.exports = (router, helpers, db) => {
     FROM orders
     WHERE orders.id = $1
     `, [order_id])
-    .then((data) => {
-      res.send(data.rows);
-      return data.rows;
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+      .then((data) => {
+        res.send(data.rows);
+        return data.rows;
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
 
-  })
+  });
 
 };
 
