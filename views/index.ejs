@@ -118,19 +118,11 @@
           <a href="/checkout" class="checkout-btn"><span class="order-btn">Checkout</span><span class="total-price"><%=cartTotal%></span></a>
         </div>
       </div>
-      <<<<<<< HEAD <!-- if cart empty display empty cart view -->
-        <!-- <div>
+
+      <div class="hide-empty">
         <%- include('partials/_emptycart') %>
-        </div> -->
-
-
-        <!-- if cart contains items hide cart empty view -->
-        <div class="hide-empty">
-          <%- include('partials/_emptycart') %>
-        </div>
-        =======
-        <% }%>
-        >>>>>>> c0592f8
+      </div>
+      <% }%>
     </main>
     <%- include('partials/_footer') %>
   </div>
