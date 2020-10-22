@@ -13,7 +13,6 @@ module.exports = (router, helpers, db) => {
     `)
       .then(data => {
         const reformatedData = findIds(data.rows);
-        console.log(reformatedData);
         res.render('admin', { orders: reformatedData });
         return data.rows;
       })
