@@ -14,12 +14,12 @@
         <div class="cart">
 
           <div class="top-cart">
-            <h3>Order #<%=order_id%></h3>
+            <h3 class="cart-head" id="checkout-cart-head">Order #<%=order_id%></h3>
             <% for(const currentCartItem in currentCartItems) { %>
             <div class="cart-admin">
-              <div class="item-price">
+              <div class="item-price" id="checkout-cart-body">
                 <h3><%=currentCartItems[currentCartItem]["count"]%>x</h3>
-                <h3><%=currentCartItems[currentCartItem]["name"]%></h3>
+                <h3 id="align-item-name"><%=currentCartItems[currentCartItem]["name"]%></h3>
                 <h3><%=currentCartItems[currentCartItem]["total"]%></h3>
               </div>
 
