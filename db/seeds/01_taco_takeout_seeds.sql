@@ -12,36 +12,36 @@ INSERT INTO menu_categories (name) VALUES ('entres');
 INSERT INTO menu_categories (name) VALUES ('desserts');
 
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (1,'Nachos', 'Tasty Nachos', 'appetizer1.jpg', 999);
+VALUES (1,'Nachos', 'Tasty Nachos', 'nachos.png', 999);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
 VALUES (1,'Cheese Sticks', 'Tasty Cheese Sticks', 'appetizer1.jpg', 799);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (1,'Tossed Salad', 'Fresh Tossed Salad', 'appetizer1.jpg', 550);
+VALUES (1,'Tossed Salad', 'Fresh Tossed Salad', 'tossed-salad.png', 550);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (1,'Chips n Guac', 'Fresh Guacamole', 'appetizer1.jpg', 350);
+VALUES (1,'Chips n Guac', 'Fresh Guacamole', 'guac.png', 350);
 
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (2,'Fountain drinks', 'Refreshing Fountain Drink', 'beverage.jpg', 199);
+VALUES (2,'Fountain drinks', 'Refreshing Fountain Drink', 'pop.jpg', 199);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (2,'Flavored tea', 'Refreshing flavored tea', 'beverage.jpg', 275);
+VALUES (2,'Margarita', 'Refreshing lime margarita', 'beverage.jpg', 775);
 -- INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
 -- VALUES (2,'Coffee', 'Fresh brewed coffee', 'beverage.jpg', 199);
 
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
 VALUES (3,'Super Taco', 'Delicious super Taco', 'taco1.png', 899);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (3,'Enchiladas', 'Delicious enchiladas', 'taco1.png', 1099);
+VALUES (3,'Enchiladas', 'Delicious enchiladas', 'taco2.png', 1099);
 -- INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
 -- VALUES (3,'Rancheros', 'Delicious rancheros', 'taco1.png', 1599);
 
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
 VALUES (4,'Fried Ice Cream', 'Tasty fried ice cream', 'icecream1.jpg', 899);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (4,'Churros', 'Delicious churros', 'icecream1.jpg', 575);
+VALUES (4,'Churros', 'Delicious churros', 'churros.png', 575);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (4,'Tortilla Crisp', 'Delicious tortilla crisp', 'icecream1.jpg', 1599);
+VALUES (4,'Tres Leche', 'Delicious tres leches cake', 'tres-leche.png', 1599);
 INSERT INTO menu_items (menu_category_id, name, description, image_url, price)
-VALUES (4,'Cheesecake', 'Delicious cheesecake', 'icecream1.jpg', 1299);
+VALUES (4,'Ginger Brownie', 'Spicy ginger brownie', 'brownie.png', 1299);
 
 -- INSERT INTO orders (user_id)
 -- VALUES (1), (3), (2);
